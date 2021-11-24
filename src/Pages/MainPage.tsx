@@ -1,5 +1,3 @@
-import Header from "../Components/Common/Header";
-import Footer from "../Components/Common/Footer";
 import PageLayout from "Components/Common/PageLayout";
 
 const MainPage: React.FC = () => {
