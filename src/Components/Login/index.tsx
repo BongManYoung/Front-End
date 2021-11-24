@@ -3,6 +3,7 @@ import { useNavigate } from "react-router";
 import { ReactComponent as Logo } from "Assets/MYD_Logo.svg";
 import * as S from "./style";
 import { Link } from "react-router-dom";
+import { postSignIn } from "utils/api/auth";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -25,8 +26,15 @@ const Login = () => {
     });
   };
 
-  const onSubmit = (e: any, data: any) => {
+  const onSubmit = async (e: any, nickname: string, password: string) => {
     e.preventDefault();
+
+    try {
+      const res = await postSignIn(nickname, password);
+      localStorage.setItem("token", res.data.token);
+    } catch (e) {
+      console.log(e);
+    }
   };
 
   useEffect(() => {
@@ -38,7 +46,7 @@ const Login = () => {
 
   return (
     <S.Wrapper>
-      <S.LoginWrapper onSubmit={(e) => onSubmit(e, inputs)}>
+      <S.LoginWrapper onSubmit={(e) => onSubmit(e, nickname, password)}>
         <Logo onClick={() => navigate("/")} />
         <S.InputWrapper>
           <div className="input-item-wrap">

@@ -1,57 +1,46 @@
 import styled from "@emotion/styled";
 
 export const MainWrapper = styled.div`
-  margin: 50px auto;
-  width: 1000px;
+  margin: 30px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   height: 100%;
 `;
 
 export const SliderWrapper = styled.div`
+  display: flex;
+  gap: 30px;
+
   img {
-    width: 100%;
-    height: 500px;
+    width: 450px;
+    height: 300px;
     object-fit: cover;
+    border-radius: 5px;
+    box-shadow: 0 0 9px #9b9b9b;
   }
 `;
 
 export const ToDayWrapper = styled.div`
-  margin: 50px 0;
+  padding: 30px;
+  margin: 50px auto;
   width: 100%;
   display: flex;
   flex-direction: column;
+  align-items: center;
+  background-color: #17202e;
+  color: white;
+  box-sizing: border-box;
 
   p {
-    margin-bottom: 20px;
+    margin-bottom: 10px;
     font-size: 24px;
     font-weight: 600;
   }
-`;
-export const ItemBoxWrapper = styled.div`
-  width: 100%;
-  border: 1px solid red;
-  display: flex;
-  flex-direction: row;
-  flex: wrap;
-  gap: 20px;
 
-  .item-box {
-    img {
-      width: 235px;
-      height: 300px;
-      object-fit: cover;
-    }
-
-    .shop-info {
-      display: flex;
-      flex-direction: column;
-
-      span:nth-child(1) {
-        color: #747474;
-      }
-
-      span:nth-child(3) {
-        font-weight: 500;
-      }
-    }
+  p:nth-child(2) {
+    font-size: 16px;
+    color: #cbcbcb;
+    font-weight: 300;
   }
 `;
