@@ -15,3 +15,25 @@
   display: flex;
   flex-direction: column;
 }
+
+.main-wrapper {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+p,
+a,
+li,
+span,
+strong,
+button,
+::placeholder,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  transform: skew(-0.1deg);
+}
