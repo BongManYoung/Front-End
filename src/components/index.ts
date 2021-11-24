@@ -1,3 +1,3 @@
-export { default as Login } from "./login/Login";
-export { default as Header } from "./Common/Header/Header";
-export { default as Footer } from "./Common/Footer/Footer";
+export { default as Login } from "./login/index";
+export { default as Header } from "./Common/Footer/index";
+export { default as Footer } from "./Common/Footer/index";
