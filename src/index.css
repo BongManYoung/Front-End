@@ -8,3 +8,9 @@
   text-decoration: none;
   font-family: "Noto Sans KR", sans-serif;
 }
+
+.login-wrap {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+}
