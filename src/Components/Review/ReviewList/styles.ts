@@ -8,7 +8,7 @@ export const HeaderWrapper = styled.header`
     border-top: 1px solid #969696;
     border-bottom: 1px solid #969696;
     margin-top: 2rem;
-    padding: 1rem;
+    padding: 0.4rem 1rem;
     text-align: center;
     flex: 1;
     cursor: pointer;
