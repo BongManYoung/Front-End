@@ -35,12 +35,12 @@ const ReviewList = () => {
 
       <ModeWrapper>
         {mode === Modes.Menu ? (
-          <>메뉴 리스트</>
+          <React.Fragment>메뉴 리스트</React.Fragment>
         ) : (
-          <>
+          <React.Fragment>
             <span className="inputTitle">리뷰 작성</span>
             <ReviewInput />
-          </>
+          </React.Fragment>
         )}
       </ModeWrapper>
     </React.Fragment>
