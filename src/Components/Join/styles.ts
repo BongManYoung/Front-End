@@ -2,10 +2,10 @@ import styled from "@emotion/styled";
 
 export const Wrapper = styled.div`
   width: 100%;
+  height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
-  flex-direction: column;
 `;
 
 export const LoginWrapper = styled.div`
@@ -30,6 +30,11 @@ export const LoginWrapper = styled.div`
     :hover {
       box-shadow: 0 2px 10px #c9c9c9;
     }
+  }
+
+  p {
+    margin-top: 20px;
+    color: #898989;
   }
 `;
 
