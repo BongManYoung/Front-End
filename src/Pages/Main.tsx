@@ -1,5 +1,5 @@
-import Header from "Components/Common/Header";
-import Footer from "Components/Common/Footer";
+import Header from "../Components/Common/Header";
+import Footer from "../Components/Common/Footer";
 
 const MainPage: React.FC = () => {
   return (
