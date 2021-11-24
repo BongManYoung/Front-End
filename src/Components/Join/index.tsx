@@ -27,6 +27,10 @@ const Join = () => {
     });
   };
 
+  const onSubmit = (e: any, data: any) => {
+    e.preventDefault();
+  };
+
   useEffect(() => {
     nickname.length >= 2 ? setEmailBor(true) : setEmailBor(false);
     password.length >= 4 ? setPasswordBor(true) : setPasswordBor(false);
@@ -38,7 +42,7 @@ const Join = () => {
 
   return (
     <S.Wrapper>
-      <S.LoginWrapper>
+      <S.LoginWrapper onSubmit={(e) => onSubmit(e, inputs)}>
         <Logo onClick={() => navigate("/")} />
         <S.InputWrapper>
           <div className="input-item-wrap">
