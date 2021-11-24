@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router";
+import { ReactComponent as Logo } from "Assets/MYD_Logo.svg";
 import * as S from "./styles";
+import { Link } from "react-router-dom";
 
 const Join = () => {
   const navigate = useNavigate();
@@ -37,7 +39,7 @@ const Join = () => {
   return (
     <S.Wrapper>
       <S.LoginWrapper>
-        <img src="" alt="로고" onClick={() => navigate("/")} />
+        <Logo onClick={() => navigate("/")} />
         <S.InputWrapper>
           <div className="input-item-wrap">
             <input
@@ -89,6 +91,9 @@ const Join = () => {
         >
           Sign
         </button>
+        <p>
+          이미 회원이신가요? <Link to="/login">로그인</Link>
+        </p>
       </S.LoginWrapper>
     </S.Wrapper>
   );
