@@ -1,14 +1,14 @@
-import Header from "../Components/Common/Header/index";
-import Footer from "../Components/Common/Footer/index";
 import Join from "../Components/Join";
+import React from "react";
+import PageLayout from "Components/Common/PageLayout";
 
 const MainPage: React.FC = () => {
   return (
-    <div className="login-wrap">
-      <Header />
-      <Join />
-      <Footer />
-    </div>
+    <React.Fragment>
+      <PageLayout>
+        <Join />
+      </PageLayout>
+    </React.Fragment>
   );
 };
 
