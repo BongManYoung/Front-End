@@ -1,11 +1,10 @@
 import React from "react";
-import "./App.css";
-import UserRouter from "./router/UserRouter";
+import Routes from "./Routers";
 
 function App() {
   return (
     <>
-      <UserRouter />
+      <Routes />
     </>
   );
 }
