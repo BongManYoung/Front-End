@@ -2,17 +2,17 @@ import styled from "@emotion/styled";
 
 export const HeaderWrapper = styled.section`
   display: flex;
-  justify-content: center;
-  margin-top: 3rem;
+  justify-content: space-between;
+  width: 100%;
+  margin: 0rem auto;
 
   .shop_pic {
     width: 360px;
+    height: 250px;
     margin-right: 1rem;
   }
 
   .shop_info {
-    margin-left: 1rem;
-
     .shop_title {
     }
     .shop_position {
