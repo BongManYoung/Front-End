@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router";
-import * as S from "./style";
+import * as S from "./styles";
 
-const SignIn = () => {
+const Join = () => {
   const navigate = useNavigate();
   const [buttonColor, setButtonColor] = useState<boolean>(false);
   const [emailBor, setEmailBor] = useState<boolean>(false);
@@ -94,4 +94,4 @@ const SignIn = () => {
   );
 };
 
-export default SignIn;
+export default Join;
