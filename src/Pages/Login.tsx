@@ -1,6 +1,6 @@
-import Header from "Components/Common/Header";
-import Footer from "Components/Common/Footer";
-import Login from "Components/login";
+import Header from "../Components/Common/Header/index";
+import Footer from "../Components/Common/Footer/index";
+import Login from "../Components/login/index";
 
 const MainPage: React.FC = () => {
   return (
