@@ -3,6 +3,7 @@ import { useNavigate } from "react-router";
 import { ReactComponent as Logo } from "Assets/MYD_Logo.svg";
 import * as S from "./styles";
 import { Link } from "react-router-dom";
+import { postJoin } from "utils/api/auth";
 
 const Join = () => {
   const navigate = useNavigate();
@@ -27,6 +28,12 @@ const Join = () => {
     });
   };
 
+  const onSubmit = (e: any, nickname: string, password: string) => {
+    e.preventDefault();
+
+    postJoin(nickname, password);
+  };
+
   useEffect(() => {
     nickname.length >= 2 ? setEmailBor(true) : setEmailBor(false);
     password.length >= 4 ? setPasswordBor(true) : setPasswordBor(false);
@@ -38,7 +45,7 @@ const Join = () => {
 
   return (
     <S.Wrapper>
-      <S.LoginWrapper>
+      <S.LoginWrapper onSubmit={(e) => onSubmit(e, nickname, password)}>
         <Logo onClick={() => navigate("/")} />
         <S.InputWrapper>
           <div className="input-item-wrap">
