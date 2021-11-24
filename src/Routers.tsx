@@ -8,6 +8,7 @@ const Routers = () => {
       <Routes>
         <Route path="/" element={<pages.MainPage />} />
         <Route path="/login" element={<pages.LoginPage />} />
+        <Route path="/signin" element={<pages.SignPage />} />
       </Routes>
     </BrowserRouter>
   );
