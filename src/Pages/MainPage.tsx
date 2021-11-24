@@ -1,10 +1,11 @@
 import PageLayout from "Components/Common/PageLayout";
+import Mainpage from "Components/Mainpage";
 
 const MainPage: React.FC = () => {
   return (
-    <>
-      <PageLayout>메인 페이지</PageLayout>
-    </>
+    <PageLayout>
+      <Mainpage />
+    </PageLayout>
   );
 };
 
