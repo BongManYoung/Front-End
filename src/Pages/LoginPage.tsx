@@ -1,14 +1,14 @@
-import Header from "Components/Common/Header";
-import Footer from "Components/Common/Footer";
+import React from "react";
 import Login from "Components/Login";
+import PageLayout from "Components/Common/PageLayout";
 
 const LoginPage: React.FC = () => {
   return (
-    <div className="login-wrap">
-      <Header />
-      <Login />
-      <Footer />
-    </div>
+    <React.Fragment>
+      <PageLayout>
+        <Login />
+      </PageLayout>
+    </React.Fragment>
   );
 };
 
