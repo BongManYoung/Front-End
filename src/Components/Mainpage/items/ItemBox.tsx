@@ -70,7 +70,7 @@ const ItemBox = () => {
         <div
           className="item-box"
           key={item.id}
-          onClick={() => navigate(`/store/${item.id}`)}
+          onClick={() => navigate(`/store/${item.id}?mode=menu`)}
         >
           <img src={item.shopImage} alt="" />
           <div className="shop-info">
