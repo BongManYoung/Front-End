@@ -8,15 +8,7 @@ export const reviewInputAtom = atom({
 
 export const reviewsAtom = atom<ReviewType[]>({
   key: "__REVIEWS_ATOM__",
-  default: [
-    {
-      nickname: "",
-      notMuch: 0,
-      perfect: 0,
-      reviewContent: "",
-      reviewIdx: 0,
-    },
-  ],
+  default: [],
 });
 
 enum Modes {
