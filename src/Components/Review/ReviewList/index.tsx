@@ -1,6 +1,7 @@
 import React, { MouseEvent, useState } from "react";
 import { useRecoilValue } from "recoil";
 import { reviewsAtom } from "Store/reviewAtom";
+import BestReview from "../ReviewBest";
 import ReviewInput from "../ReviewInput";
 import ReviewItem from "../ReviewItem";
 import Order from "Components/Order/Order";
@@ -48,6 +49,7 @@ const ReviewList = () => {
           </React.Fragment>
         ) : (
           <React.Fragment>
+            <BestReview />
             <span className="inputTitle">리뷰 작성</span>
             <ReviewInput />
             {reviewsMap}

@@ -7,7 +7,6 @@ export const ItemBoxWrapper = styled.div`
   flex-direction: row;
   flex: wrap;
   gap: 30px;
-  overflow-y: auto;
 
   .item-box {
     transition: all 0.5s;
