@@ -11,6 +11,8 @@ import { useRecoilState, useSetRecoilState } from "recoil";
 import { reviewInputAtom, reviewsAtom } from "Store/reviewAtom";
 import { ReviewType } from "Types/Review";
 import { createReview } from "utils/api/review";
+import { useLocation } from "react-router";
+import { parse } from "query-string";
 
 interface InputProps {}
 
@@ -19,6 +21,9 @@ const ReviewInput: React.FunctionComponent<InputProps> = () => {
 
   const setReviews = useSetRecoilState(reviewsAtom);
   const [reviewContent, setReviewContent] = useRecoilState(reviewInputAtom);
+  const location = useLocation();
+  const query = parse(location.search);
+  const id = query.id;
 
   const handleChangeReviewContent = useCallback(
     (event: ChangeEvent<HTMLTextAreaElement>) => {
@@ -46,7 +51,7 @@ const ReviewInput: React.FunctionComponent<InputProps> = () => {
     };
     setReviews((prevReviews) => [newReview, ...prevReviews]);
 
-    createReview(1, reviewContent);
+    createReview(id, reviewContent);
   }, [reviewContent, setReviews]);
 
   const handleSubmitReview = useCallback(
