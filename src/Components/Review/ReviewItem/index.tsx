@@ -3,12 +3,36 @@ import { FunctionComponent } from "react";
 import { ReviewType } from "Types/Review";
 import { CommentWrapper, ReviewIcon } from "./styles";
 import { ReactComponent as UserProfile } from "Assets/User_Profile.svg";
+import {
+  addDisLike,
+  addLike,
+  cancelDisLike,
+  cancelLike,
+} from "utils/api/review";
 
 type IReviewItemProps = ReviewType;
 
 const ReviewItem: FunctionComponent<IReviewItemProps> = ({ content, user }) => {
   const [buttonSelect, setButtonSelect] = useState<boolean>(false);
   const [worstButton, setWorstButton] = useState<boolean>(false);
+
+  const onClickButton = () => {
+    setButtonSelect(!buttonSelect);
+    setWorstButton(false);
+    addLike(1);
+    if (buttonSelect) {
+      cancelLike(1);
+    }
+  };
+
+  const onClickWorst = () => {
+    setWorstButton(!worstButton);
+    setButtonSelect(false);
+    addDisLike(1);
+    if (worstButton) {
+      cancelDisLike(1);
+    }
+  };
 
   return (
     <Fragment>
@@ -25,10 +49,7 @@ const ReviewItem: FunctionComponent<IReviewItemProps> = ({ content, user }) => {
         <ReviewIcon>
           <div
             className="icon_wrapper"
-            onClick={() => {
-              setButtonSelect(!buttonSelect);
-              setWorstButton(false);
-            }}
+            onClick={onClickButton}
             style={
               buttonSelect
                 ? { background: "#6B1AEE", color: "white" }
@@ -40,10 +61,7 @@ const ReviewItem: FunctionComponent<IReviewItemProps> = ({ content, user }) => {
           </div>
           <div
             className="icon_wrapper"
-            onClick={() => {
-              setWorstButton(!worstButton);
-              setButtonSelect(false);
-            }}
+            onClick={onClickWorst}
             style={
               worstButton
                 ? { background: "#6B1AEE", color: "white" }
