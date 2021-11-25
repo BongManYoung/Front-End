@@ -19,6 +19,13 @@ export const HeaderWrapper = styled.section`
     flex-direction: column;
     justify-content: space-between;
 
+    .shop_review_wrapper {
+      display: flex;
+      span {
+        margin-right: 15px;
+      }
+    }
+
     .shop_title-wrap {
       display: flex;
       flex-direction: column;
