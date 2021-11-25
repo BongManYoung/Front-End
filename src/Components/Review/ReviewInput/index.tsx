@@ -10,6 +10,7 @@ import SpeechRecognition, {
 import { useRecoilState, useSetRecoilState } from "recoil";
 import { reviewInputAtom, reviewsAtom } from "Store/reviewAtom";
 import { ReviewType } from "Types/Review";
+import { createReview } from "utils/api/review";
 
 interface InputProps {}
 
@@ -44,6 +45,8 @@ const ReviewInput: React.FunctionComponent<InputProps> = () => {
       },
     };
     setReviews((prevReviews) => [newReview, ...prevReviews]);
+
+    createReview(1, reviewContent);
   }, [reviewContent, setReviews]);
 
   const handleSubmitReview = useCallback(

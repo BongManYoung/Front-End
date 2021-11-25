@@ -82,7 +82,7 @@ export const ToDayWrapper = styled.div`
     font-weight: 600;
   }
 
-  p:nth-child(2) {
+  p:nth-of-type(2) {
     font-size: 16px;
     color: #cbcbcb;
     font-weight: 300;
@@ -98,12 +98,12 @@ export const Title = styled.div`
   position: absolute;
   bottom: 0;
 
-  span:nth-child(1) {
+  span:nth-of-type(1) {
     font-weight: 400;
     font-size: 30px;
   }
 
-  span:nth-child(2) {
+  span:nth-of-type(2) {
     font-weight: 500;
     font-size: 35px;
   }
