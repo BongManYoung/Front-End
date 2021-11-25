@@ -50,7 +50,7 @@ const ReviewList = () => {
         ) : (
           <React.Fragment>
             <BestReview />
-            <span className="inputTitle">리뷰 작성</span>
+            <span className="inputTitle">주문한 후기를 남겨주세요!</span>
             <ReviewInput />
             {reviewsMap}
           </React.Fragment>

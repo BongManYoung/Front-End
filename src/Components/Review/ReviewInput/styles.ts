@@ -2,13 +2,12 @@ import styled from "@emotion/styled";
 
 export const InputWrapper = styled.div`
   display: flex;
-  background-color: #f9f9f9;
+  background-color: #f2f2f2;
   margin: 0 auto;
   width: 100%;
-  padding: 0.2rem;
+  padding: 0.5rem;
   border-radius: 5px;
   overflow: hidden;
-  margin-bottom: 3rem;
   height: 100%;
 
   .reviewInput {
@@ -20,6 +19,7 @@ export const InputWrapper = styled.div`
   }
   .mic {
     cursor: pointer;
+    width: 18px;
   }
   .listening {
     width: 100px;

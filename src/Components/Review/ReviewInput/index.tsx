@@ -76,7 +76,11 @@ const ReviewInput: React.FunctionComponent<InputProps> = () => {
           onChange={handleChangeReviewContent}
         />
         {listening ? (
-          <MicON className="mic" onClick={handleSTTStopListening} />
+          <MicON
+            className="mic"
+            style={{ width: "15px", marginRight: "20px" }}
+            onClick={handleSTTStopListening}
+          />
         ) : (
           <Mic className="mic" onClick={handleSTTListener} />
         )}

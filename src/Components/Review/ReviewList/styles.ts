@@ -24,9 +24,12 @@ export const HeaderWrapper = styled.header`
 
 export const ModeWrapper = styled.div`
   .inputTitle {
+    margin-top: 30px;
     display: inline-block;
     margin-top: 1rem;
     margin-bottom: 1rem;
-    color: #969696;
+    color: black;
+    font-weight: 500;
+    font-size: 18px;
   }
 `;
