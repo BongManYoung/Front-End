@@ -25,3 +25,37 @@ export const ChatInputWrapper = styled.div`
     margin: 10px;
   }
 `;
+
+export const InputWrapper = styled.div`
+  display: flex;
+  background-color: rgba(239, 239, 240, 0.8);
+  margin: 0 auto;
+  width: 80%;
+  padding: 0.5rem;
+  border-radius: 5px;
+  overflow: hidden;
+  height: 30px;
+  margin-top: 50px;
+  border: 0.5px solid gray;
+
+  .Input {
+    width: 100%;
+    height: 100%;
+    background-color: inherit;
+    border: none;
+    resize: none;
+    font-size: 14px;
+    font-weight: lighter;
+    padding: 5px;
+  }
+  .mic {
+    cursor: pointer;
+    width: 18px;
+  }
+  .listening {
+    width: 100px;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+  }
+`;

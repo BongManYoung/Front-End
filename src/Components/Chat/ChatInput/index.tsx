@@ -1,11 +1,18 @@
-import React, { useCallback, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { ChatInputWrapper } from "./styles";
+import * as S from "./styles";
+import { ReactComponent as Mic } from "Assets/MIC.svg";
+import { ReactComponent as MicON } from "Assets/MIC_ON.svg";
 import { useSetRecoilState } from "recoil";
 import { chatListAtom } from "Store/chatBotAtom";
 import { randomMenuRequest } from "utils/api/chat";
 import { useLocation } from "react-router";
 import { parse } from "query-string";
 import { ChatType } from "Types/Chat";
+import TextareaAutosize from "react-textarea-autosize";
+import SpeechRecognition, {
+  useSpeechRecognition,
+} from "react-speech-recognition";
 
 interface IChatInputProps {}
 
@@ -56,10 +63,23 @@ const ChatInput: React.FunctionComponent<IChatInputProps> = () => {
   //const { listen, listening, stop } = useSpeechRecognition({
 
   //  });
+  const { listening, transcript } = useSpeechRecognition();
+
+  const handleSTTListener = useCallback(() => {
+    SpeechRecognition.startListening({ language: "ko", continuous: true });
+  }, []);
+
+  const handleSTTStopListening = useCallback(() => {
+    SpeechRecognition.stopListening();
+  }, []);
+
+  useEffect(() => {
+    setValue(transcript);
+  }, [transcript, setValue]);
 
   return (
     <React.Fragment>
-      <ChatInputWrapper>
+      {/* <ChatInputWrapper>
         <input
           type="text"
           className="chat_input"
@@ -67,8 +87,8 @@ const ChatInput: React.FunctionComponent<IChatInputProps> = () => {
           value={value}
           onChange={onChangeValue}
           onKeyPress={handleAddChat}
-        />
-        {/*  {listening ? (
+        /> */}
+      {/*  {listening ? (
           <MicON
             className="mic"
             style={{ width: "15px", marginRight: "20px" }}
@@ -77,7 +97,23 @@ const ChatInput: React.FunctionComponent<IChatInputProps> = () => {
         ) : (
           <Mic className="mic" onClick={stop} />
         )} */}
-      </ChatInputWrapper>
+      {/* </ChatInputWrapper> */}
+      <S.InputWrapper>
+        <TextareaAutosize
+          className="Input"
+          value={value}
+          onChange={onChangeValue}
+        />
+        {listening ? (
+          <MicON
+            className="mic"
+            style={{ width: "15px", marginRight: "20px" }}
+            onClick={handleSTTStopListening}
+          />
+        ) : (
+          <Mic className="mic" onClick={handleSTTListener} />
+        )}
+      </S.InputWrapper>
     </React.Fragment>
   );
 };
