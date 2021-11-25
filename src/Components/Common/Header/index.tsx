@@ -8,7 +8,13 @@ const Header: React.FC = () => {
   return (
     <HeaderContainer>
       <div className="header">
-        <Logo className="logo" onClick={() => navigate("/")} />
+        <Logo
+          className="logo"
+          onClick={() => {
+            navigate("/");
+            window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
+          }}
+        />
 
         <nav className="links">
           <NavLink
@@ -19,11 +25,18 @@ const Header: React.FC = () => {
           >
             오늘의 메뉴
           </NavLink>
-          <NavLink to="/">이달의 리뷰</NavLink>
           <NavLink
             to="/"
             onClick={() => {
-              window.scrollTo({ top: 1400, left: 0, behavior: "smooth" });
+              window.scrollTo({ top: 1210, left: 0, behavior: "smooth" });
+            }}
+          >
+            음성인식
+          </NavLink>
+          <NavLink
+            to="/"
+            onClick={() => {
+              window.scrollTo({ top: 1900, left: 0, behavior: "smooth" });
             }}
           >
             음성 리뷰

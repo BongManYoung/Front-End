@@ -15,24 +15,31 @@ export const MainWrapper = styled.div`
 `;
 
 export const MicDesc = styled.p`
-  margin-top: 200px;
   font-size: 24px;
+  font-weight: 500;
+  margin-bottom: 30px;
+`;
+
+export const VoiceTest = styled.div`
+  width: 100%;
+  height: 850px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 60px;
 `;
 
 export const InputWrapper = styled.div`
+  margin-top: 30px;
   display: flex;
   background-color: #fff;
   margin: 0 auto;
-  margin-top: 80px;
-  margin-bottom: 250px;
   width: 800px;
   padding: 0.5rem;
   border-radius: 5px;
   overflow: hidden;
-  height: 100%;
-  border-top: 0.5px solid black;
-  border-left: 0.5px solid black;
-  border-right: 0.5px solid black;
+  box-shadow: 0 2px 10px #d3d3d3;
   border-bottom: 3px solid #6b1aee;
 
   .Input {
@@ -116,7 +123,7 @@ export const SliderWrapper = styled.div`
 
 export const ToDayWrapper = styled.div`
   padding: 30px;
-  margin: 100px auto;
+  margin: 100px auto 0;
   width: 100%;
   display: flex;
   flex-direction: column;
