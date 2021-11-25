@@ -98,6 +98,7 @@ const MainPage = () => {
           <Mic className="mic" onClick={handleSTTListener} />
         )}
       </S.InputWrapper>
+
       <img
         src={Promotion}
         alt=""

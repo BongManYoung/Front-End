@@ -1,5 +1,5 @@
 import React, { MouseEvent, useEffect } from "react";
-import { useRecoilState, useRecoilValue } from "recoil";
+import { useRecoilState } from "recoil";
 import { parse } from "query-string";
 import { reviewModeAtom, reviewsAtom } from "Store/reviewAtom";
 import BestReview from "../ReviewBest";
@@ -18,7 +18,7 @@ type TMode = Modes.Menu | Modes.Review;
 
 const ReviewList = () => {
   const navigate = useNavigate();
-  const reviews = useRecoilValue(reviewsAtom);
+  const [reviews, setReviews] = useRecoilState(reviewsAtom);
   const [modeState, setMode] = useRecoilState(reviewModeAtom);
   const location = useLocation();
   const query = parse(location.search);
@@ -31,10 +31,6 @@ const ReviewList = () => {
     setMode(mode);
   };
 
-  const reviewsMap = reviews.map((review) => (
-    <ReviewItem key={review.idx} {...review} />
-  ));
-
   useEffect(() => {
     const mode = parse(location.search).mode;
 
@@ -45,11 +41,13 @@ const ReviewList = () => {
     }
 
     try {
-      getReview(id).then();
+      getReview(id).then((res) => setReviews(res.data.data));
     } catch (e: any) {
       throw Error(e);
     }
   }, [location, setMode]);
+
+  console.log(reviews);
 
   return (
     <React.Fragment>
@@ -84,7 +82,15 @@ const ReviewList = () => {
             <BestReview />
             <span className="inputTitle">주문한 후기를 남겨주세요!</span>
             <ReviewInput />
-            {reviewsMap}
+            {reviews?.length === 0 ? (
+              <>작성된 리뷰가 없습니다.</>
+            ) : (
+              <>
+                {reviews.map((item, index) => (
+                  <ReviewItem review={item} key={index} />
+                ))}
+              </>
+            )}
           </React.Fragment>
         )}
       </ModeWrapper>

@@ -42,12 +42,11 @@ const ReviewInput: React.FunctionComponent<InputProps> = () => {
 
   const addReview = useCallback(() => {
     const newReview: ReviewType = {
-      idx: Math.floor(Math.random()),
-      content: reviewContent,
-      user: {
-        idx: Math.floor(Math.random()),
-        nickname: "테스트",
-      },
+      reviewIdx: Math.floor(Math.random()),
+      reviewContent: reviewContent,
+
+      //idx: Math.floor(Math.random()),
+      nickname: "테스트",
     };
     setReviews((prevReviews) => [newReview, ...prevReviews]);
 

@@ -17,6 +17,7 @@ export const getReview = async (storeIdx: any) => {
   return await request({
     url: `/review/${storeIdx}`,
     method: "get",
+    headers: { Authorization: token },
   });
 };
 
