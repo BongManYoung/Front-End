@@ -44,14 +44,12 @@ const ReviewInput: React.FunctionComponent<InputProps> = () => {
     const newReview: ReviewType = {
       reviewIdx: Math.floor(Math.random()),
       reviewContent: reviewContent,
-
-      //idx: Math.floor(Math.random()),
       nickname: "테스트",
     };
     setReviews((prevReviews) => [newReview, ...prevReviews]);
 
     createReview(id, reviewContent);
-  }, [reviewContent, setReviews]);
+  }, [reviewContent, setReviews, id]);
 
   const handleSubmitReview = useCallback(
     (event: KeyboardEvent<HTMLTextAreaElement>) => {
