@@ -3,9 +3,13 @@ import Footer from "Components/Common/Footer";
 import Header from "Components/Common/Header";
 import ReviewHeader from "Components/Review/ReviewHeader";
 import ReviewList from "Components/Review/ReviewList";
-import React from "react";
+import React, { useEffect } from "react";
 
 const ReviewPage: React.FunctionComponent = () => {
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }, []);
+
   return (
     <React.Fragment>
       <Header />

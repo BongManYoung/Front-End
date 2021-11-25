@@ -54,12 +54,12 @@ const ReviewInput: React.FunctionComponent<InputProps> = () => {
 
       if (event.key === "Enter") {
         if (window.confirm("리뷰를 작성하시겠습니까?")) {
+          handleSTTStopListening();
           addReview();
-          setReviewContent("");
         }
       }
     },
-    [addReview, setReviewContent]
+    [addReview, handleSTTStopListening]
   );
 
   useEffect(() => {
