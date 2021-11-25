@@ -5,7 +5,7 @@ import ItemBox from "./items/ItemBox";
 import * as S from "./style";
 
 const MainPage = () => {
-  const [ShopList, setShopList] = useState();
+  const [ShopList, setShopList] = useState([]);
 
   const shop_list = [
     {
@@ -22,20 +22,20 @@ const MainPage = () => {
     },
   ];
 
-  useEffect(() => {
+  /* useEffect(() => {
     try {
-      getStoreList().then((res) => setShopList(res.data));
+      getStoreList().then((res) => setShopList(res.data.data.stores));
     } catch (e) {
       console.log(e);
     }
+  }, []); */
 
-    console.log(ShopList);
-  }, [ShopList]);
+  console.log(ShopList);
 
   return (
     <S.MainWrapper>
       <S.SliderWrapper>
-        {shop_list.map((item, index) => (
+        {shop_list?.map((item, index) => (
           <BestShop item={item} key={index} />
         ))}
       </S.SliderWrapper>

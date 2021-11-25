@@ -9,3 +9,17 @@ export const chatListAtom = atom({
   default: [],
   key: "__CHAT_LIST_ATOM__",
 });
+
+export const chatInputAtom = atom({
+  key: "chatInputAtom",
+  default: "",
+});
+
+export const chatInputValueAtom = atom({
+  key: "chatInputValueAtom",
+  default: [
+    {
+      content: "",
+    },
+  ],
+});
