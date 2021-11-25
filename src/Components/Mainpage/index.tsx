@@ -81,23 +81,25 @@ const MainPage = () => {
         <p>오늘의 메뉴를 먹고 소상공인들을 위하여 응원의 리뷰를 남겨요!</p>
         <ItemBox />
       </S.ToDayWrapper>
-      <S.MicDesc>음성인식리뷰를 테스트 해보세요 !</S.MicDesc>
-      <S.InputWrapper>
-        <TextareaAutosize
-          className="Input"
-          value={inputContent}
-          onChange={handleChangeInputContent}
-        />
-        {listening ? (
-          <MicON
-            className="mic"
-            style={{ width: "15px", marginRight: "20px" }}
-            onClick={handleSTTStopListening}
+      <S.VoiceTest>
+        <S.MicDesc>마이크를 눌러 음성인식 리뷰를 사용해 보세요 !</S.MicDesc>
+        <S.InputWrapper>
+          <TextareaAutosize
+            className="Input"
+            value={inputContent}
+            onChange={handleChangeInputContent}
           />
-        ) : (
-          <Mic className="mic" onClick={handleSTTListener} />
-        )}
-      </S.InputWrapper>
+          {listening ? (
+            <MicON
+              className="mic"
+              style={{ width: "15px", marginRight: "20px" }}
+              onClick={handleSTTStopListening}
+            />
+          ) : (
+            <Mic className="mic" onClick={handleSTTListener} />
+          )}
+        </S.InputWrapper>
+      </S.VoiceTest>
 
       <img
         src={Promotion}

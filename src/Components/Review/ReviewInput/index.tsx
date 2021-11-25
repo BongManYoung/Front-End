@@ -13,6 +13,9 @@ import { ReviewType } from "Types/Review";
 import { createReview } from "utils/api/review";
 import { useLocation } from "react-router";
 import { parse } from "query-string";
+import { ToastError, ToastSuccess } from "Hook/toastHook";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 interface InputProps {}
 
@@ -50,7 +53,9 @@ const ReviewInput: React.FunctionComponent<InputProps> = () => {
     };
     setReviews((prevReviews) => [newReview, ...prevReviews]);
 
-    createReview(id, reviewContent);
+    createReview(id, reviewContent)
+      .then(() => ToastSuccess("리뷰가 작성되었어요"))
+      .catch(() => ToastError("리뷰작성에 실패했습니다."));
   }, [reviewContent, setReviews]);
 
   const handleSubmitReview = useCallback(
@@ -75,6 +80,7 @@ const ReviewInput: React.FunctionComponent<InputProps> = () => {
 
   return (
     <React.Fragment>
+      <ToastContainer />
       <InputWrapper>
         <TextareaAutosize
           onKeyPress={handleSubmitReview}
