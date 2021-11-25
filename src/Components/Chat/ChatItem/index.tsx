@@ -1,17 +1,20 @@
 import React from "react";
 import { ChatType } from "Types/Chat";
+import { ChatWrapper } from "./styles";
 
 type IChatItemProps = ChatType;
 
 const ChatItem: React.FunctionComponent<IChatItemProps> = ({
-  chat_content,
-  id,
+  chatContent,
+  isMyChat,
   children,
 }) => {
   return (
     <React.Fragment>
-      {children}
-      <p>{chat_content}</p>
+      <ChatWrapper>
+        {children}
+        <p>{chatContent}</p>
+      </ChatWrapper>
     </React.Fragment>
   );
 };
