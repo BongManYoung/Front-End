@@ -3,11 +3,10 @@ import * as S from "./style";
 
 const MonthReview = () => {
   return (
-    <>
-      {/* <S.MonthReviewWrapper>
-        <div>ㅎㅇㅎㅇ</div>
-      </S.MonthReviewWrapper> */}
-    </>
+    <S.MonthReviewWrapper>
+      <span>이달의 리뷰</span>
+      <S.ReviewList></S.ReviewList>
+    </S.MonthReviewWrapper>
   );
 };
 
