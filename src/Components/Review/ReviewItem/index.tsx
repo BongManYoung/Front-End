@@ -1,6 +1,4 @@
 import { Fragment, useState } from "react";
-import { FunctionComponent } from "react";
-import { ReviewType } from "Types/Review";
 import { CommentWrapper, ReviewIcon } from "./styles";
 import { ReactComponent as UserProfile } from "Assets/User_Profile.svg";
 import {
@@ -12,14 +10,16 @@ import {
 import { useLocation } from "react-router";
 import { parse } from "query-string";
 
-type IReviewItemProps = ReviewType;
+interface Props {
+  review: any;
+}
 
-const ReviewItem: FunctionComponent<IReviewItemProps> = ({ content, user }) => {
+const ReviewItem = ({ review }: Props) => {
   const [buttonSelect, setButtonSelect] = useState<boolean>(false);
   const [worstButton, setWorstButton] = useState<boolean>(false);
+
   const location = useLocation();
   const query = parse(location.search);
-
   const id = query.id;
 
   const onClickButton = () => {
@@ -45,11 +45,11 @@ const ReviewItem: FunctionComponent<IReviewItemProps> = ({ content, user }) => {
       <CommentWrapper>
         <header className="reviewHeader">
           <UserProfile className="profile" />
-          <h3 className="nickname">{user.nickname}</h3>
+          <h3 className="nickname">{review?.nickname}</h3>
         </header>
 
         <div className="reviewContainer">
-          <p className="reviewContent">{content}</p>
+          <p className="reviewContent">{review?.reviewContent}</p>
           <span>신고</span>
         </div>
         <ReviewIcon>
@@ -63,7 +63,7 @@ const ReviewItem: FunctionComponent<IReviewItemProps> = ({ content, user }) => {
             }
           >
             <span>👍</span>
-            <span>10</span>
+            <span>{review.perfect}</span>
           </div>
           <div
             className="icon_wrapper"
@@ -75,7 +75,7 @@ const ReviewItem: FunctionComponent<IReviewItemProps> = ({ content, user }) => {
             }
           >
             <span>👎</span>
-            <span>10</span>
+            <span>{review.notMuch}</span>
           </div>
         </ReviewIcon>
       </CommentWrapper>

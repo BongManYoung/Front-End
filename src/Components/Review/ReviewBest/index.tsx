@@ -10,20 +10,20 @@ const BestReview = () => {
 
   const review: ReviewType[] = [
     {
-      idx: 1,
-      content: "우와 정말 너무 맛있어요 다음에도 또 오고 싶네요 ㅎㅎ",
-      user: {
-        idx: 1,
-        nickname: "강은빈",
-      },
+      nickname: "시현이에욤ㅎ",
+      notMuch: 2,
+      perfect: 35,
+      reviewContent:
+        "이런 맛 처음입니다. 사장님도 정말 친절하세요!! 서비스도 엄청 많이 주셔서 푸짐하게 잘 먹었습니다. ㅎㅎㅎ 감사해요!!",
+      reviewIdx: 1,
     },
     {
-      idx: 1,
-      content: "우와 정말 너무 맛있어요 다음에도 또 오고 싶네요 ㅎㅎ",
-      user: {
-        idx: 1,
-        nickname: "강은빈",
-      },
+      nickname: "준혁아가",
+      notMuch: 2,
+      perfect: 23,
+      reviewContent:
+        "이런 맛 처음입니다. 사장님도 정말 친절하세요!! 서비스도 엄청 많이 주셔서 푸짐하게 잘 먹었습니다. ㅎㅎㅎ 감사해요!!",
+      reviewIdx: 1,
     },
   ];
 
@@ -35,14 +35,15 @@ const BestReview = () => {
         </div>
         <span className="more_text">더보기 {">"}</span>
       </div>
-      {review.map((review, index) => (
-        <ReviewItem
-          key={index}
-          idx={review.idx}
-          user={review.user}
-          content={review.content}
-        />
-      ))}
+      {review?.length === 0 ? (
+        <>작성된 리뷰가 없습니다.</>
+      ) : (
+        <>
+          {review?.map((review, index) => (
+            <ReviewItem key={index} review={review} />
+          ))}
+        </>
+      )}
     </S.BestWrapper>
   );
 };
