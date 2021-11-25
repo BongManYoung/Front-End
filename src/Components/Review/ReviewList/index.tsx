@@ -1,49 +1,63 @@
-import React, { MouseEvent, useState } from "react";
-import { useRecoilValue } from "recoil";
-import { reviewsAtom } from "Store/reviewAtom";
+import React, { MouseEvent, useEffect } from "react";
+import { useRecoilState, useRecoilValue } from "recoil";
+import { parse } from "query-string";
+import { reviewModeAtom, reviewsAtom } from "Store/reviewAtom";
 import BestReview from "../ReviewBest";
 import ReviewInput from "../ReviewInput";
 import ReviewItem from "../ReviewItem";
 import Order from "Components/Order/Order";
 import { HeaderWrapper, ModeWrapper } from "./styles";
+import { useLocation } from "react-router";
+
+enum Modes {
+  Menu = "menu",
+  Review = "review",
+}
+type TMode = Modes.Menu | Modes.Review;
 
 const ReviewList = () => {
-  enum Modes {
-    Menu,
-    Review,
-  }
+  const location = useLocation();
   const reviews = useRecoilValue(reviewsAtom);
-  const [mode, setMode] = useState(Modes.Menu);
+  const [modeState, setMode] = useRecoilState(reviewModeAtom);
 
   const toggleMode = (event: MouseEvent) => {
-    setMode(parseInt((event.target as HTMLDivElement).id, 10));
+    setMode((event.target as HTMLElement).id as TMode);
   };
 
   const reviewsMap = reviews.map((review) => (
     <ReviewItem key={review.idx} {...review} />
   ));
 
+  useEffect(() => {
+    const mode = parse(location.search).mode;
+    setMode(mode as TMode);
+  }, [location, setMode]);
+
   return (
     <React.Fragment>
       <HeaderWrapper>
         <div
-          id="0"
+          id="menu"
           onClick={toggleMode}
-          className={`menuSelector ${mode === Modes.Menu ? "selected" : ""}`}
+          className={`menuSelector ${
+            modeState === Modes.Menu ? "selected" : ""
+          }`}
         >
           메뉴
         </div>
         <div
-          id="1"
+          id="review"
           onClick={toggleMode}
-          className={`menuSelector ${mode === Modes.Review ? "selected" : ""}`}
+          className={`menuSelector ${
+            modeState === Modes.Review ? "selected" : ""
+          }`}
         >
           리뷰 보기
         </div>
       </HeaderWrapper>
 
       <ModeWrapper>
-        {mode === Modes.Menu ? (
+        {modeState === Modes.Menu ? (
           <React.Fragment>
             <Order />
           </React.Fragment>
