@@ -89,6 +89,7 @@ const Order: React.FC = () => {
         <S.ItemWrapper>
           {dummy.map((item, idex) => (
             <Item
+              key={idex}
               shopImage={item.shopImage}
               name={item.name}
               menu={item.menu}
