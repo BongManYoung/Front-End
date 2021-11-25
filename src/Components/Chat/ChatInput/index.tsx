@@ -1,6 +1,6 @@
 import React, { useCallback, useState } from "react";
 import { ChatInputWrapper } from "./styles";
-import { useRecoilState } from "recoil";
+import { useSetRecoilState } from "recoil";
 import { chatListAtom } from "Store/chatBotAtom";
 import { randomMenuRequest } from "utils/api/chat";
 import { useLocation } from "react-router";
@@ -12,7 +12,7 @@ interface IChatInputProps {}
 const ChatInput: React.FunctionComponent<IChatInputProps> = () => {
   const location = useLocation();
   const [value, setValue] = useState("");
-  const [chatListState, setChatListState] = useRecoilState(chatListAtom);
+  const setChatListState = useSetRecoilState(chatListAtom);
 
   const onChangeValue = useCallback((event) => {
     setValue(event.target.value);
