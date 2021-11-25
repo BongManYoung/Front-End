@@ -8,7 +8,6 @@ import ReviewItem from "../ReviewItem";
 import Order from "Components/Order/Order";
 import { HeaderWrapper, ModeWrapper } from "./styles";
 import { useLocation, useNavigate } from "react-router";
-import { useSearchParams } from "react-router-dom";
 
 enum Modes {
   Menu = "menu",
