@@ -27,7 +27,10 @@ const ReviewHeader: React.FunctionComponent = () => {
 
         <div className="shop_info">
           <div className="deco"></div>
-          <h1 className="shop_title">{shopInfo.title}</h1>
+          <div className="shop_title-wrap">
+            <div className="shop_title_line" />
+            <h1 className="shop_title">{shopInfo.title}</h1>
+          </div>
           <span className="shop_position">{shopInfo.position}</span>
           <p className="shop_content">{shopInfo.content}</p>
           <div className="shop_menus">

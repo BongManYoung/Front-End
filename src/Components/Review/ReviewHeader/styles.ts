@@ -7,28 +7,44 @@ export const HeaderWrapper = styled.section`
   margin: 0rem auto;
 
   .shop_pic {
-    width: 360px;
-    height: 250px;
+    width: 500px;
+    height: 300px;
     margin-right: 1rem;
+    object-fit: cover;
   }
 
   .shop_info {
-    .shop_title {
+    width: 45%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    .shop_title-wrap {
+      display: flex;
+      flex-direction: column;
+
+      .shop_title_line {
+        height: 3px;
+        width: 15%;
+        background-color: #6b1aee;
+      }
     }
     .shop_position {
       display: inline-block;
       color: #8c8c8c;
-      font-size: 14px;
+      font-size: 15px;
       margin-bottom: 1rem;
     }
     .shop_content {
       padding: 1rem;
+      border-radius: 5px;
       background-color: #fafafa;
-      font-size: 12px;
+      font-size: 15px;
       margin-bottom: 1rem;
     }
 
     .shop_menus {
+      width: 47%;
       &_title {
         font-weight: normal;
         color: #8c8c8c;
@@ -37,6 +53,7 @@ export const HeaderWrapper = styled.section`
       flex-direction: column;
 
       & > select {
+        border-radius: 5px;
         padding: 0.3rem 1rem;
         border: none;
         background-color: #fafafa;
@@ -46,21 +63,30 @@ export const HeaderWrapper = styled.section`
     .buttons {
       margin-top: 1rem;
       display: flex;
-      justify-content: space-evenly;
+      justify-content: space-between;
 
       .special {
-        background-color: #6b1aee;
-        border: 1px solid #6b1aee;
         color: white;
+        outline: none;
+        border: none;
+        background: #6b1aee;
+        border-radius: 5px;
       }
 
       & > button {
-        width: 224px;
+        cursor: pointer;
+        width: 47%;
         height: 40px;
         background-color: #fafafa;
         border: none;
-        border: 1px solid #969696;
+        border: 1px solid #e3e3e3;
+        border-radius: 5px;
         color: #969696;
+        transition: all 0.5s;
+
+        :hover {
+          box-shadow: 0 1px 5px #e7e7e7;
+        }
       }
     }
   }

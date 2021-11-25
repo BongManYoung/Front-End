@@ -2,7 +2,7 @@ import styled from "@emotion/styled";
 
 export const InputWrapper = styled.div`
   display: flex;
-  background-color: #eee3ff;
+  background-color: #f9f9f9;
   margin: 0 auto;
   width: 100%;
   padding: 0.2rem;

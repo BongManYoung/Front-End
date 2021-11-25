@@ -1,12 +1,13 @@
 import styled from "@emotion/styled";
 
 export const HeaderWrapper = styled.header`
+  margin: 30px 0;
   width: 100%;
   display: flex;
 
   .menuSelector {
-    border-top: 1px solid #969696;
-    border-bottom: 1px solid #969696;
+    border-top: 1px solid #e3e3e3;
+    border-bottom: 1px solid #e3e3e3;
     margin-top: 2rem;
     padding: 0.4rem 1rem;
     text-align: center;
@@ -15,6 +16,7 @@ export const HeaderWrapper = styled.header`
   }
 
   .selected {
+    border-radius: 5px;
     background-color: #6b1aee;
     color: white;
   }
