@@ -100,9 +100,11 @@ const ChatInput: React.FunctionComponent<IChatInputProps> = () => {
       {/* </ChatInputWrapper> */}
       <S.InputWrapper>
         <TextareaAutosize
+          placeholder="메세지를 입력해주세요."
           className="Input"
           value={value}
           onChange={onChangeValue}
+          onKeyPress={handleAddChat}
         />
         {listening ? (
           <MicON
