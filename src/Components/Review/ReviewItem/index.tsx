@@ -9,6 +9,9 @@ import {
 } from "utils/api/review";
 import { useLocation } from "react-router";
 import { parse } from "query-string";
+import { ToastError, ToastSuccess } from "Hook/toastHook";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 interface Props {
   review: any;
@@ -25,7 +28,11 @@ const ReviewItem = ({ review }: Props) => {
   const onClickButton = () => {
     setButtonSelect(!buttonSelect);
     setWorstButton(false);
-    addLike(id);
+    addLike(id)
+      .then(() => {
+        ToastSuccess("좋아요가 표시 되었습니다.");
+      })
+      .catch(() => ToastError("실패하였습니다."));
     if (buttonSelect) {
       cancelLike(id);
     }
@@ -34,7 +41,11 @@ const ReviewItem = ({ review }: Props) => {
   const onClickWorst = () => {
     setWorstButton(!worstButton);
     setButtonSelect(false);
-    addDisLike(id);
+    addDisLike(id)
+      .then(() => {
+        ToastSuccess("싫어요가 표시 되었습니다.");
+      })
+      .catch(() => ToastError("실패하였습니다."));
     if (worstButton) {
       cancelDisLike(id);
     }
@@ -42,6 +53,7 @@ const ReviewItem = ({ review }: Props) => {
 
   return (
     <Fragment>
+      <ToastContainer />
       <CommentWrapper>
         <header className="reviewHeader">
           <UserProfile className="profile" />
