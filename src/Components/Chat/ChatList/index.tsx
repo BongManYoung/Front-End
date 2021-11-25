@@ -1,5 +1,6 @@
 import React, { useCallback } from "react";
-import { useParams } from "react-router";
+import { parse } from "query-string";
+import { useLocation } from "react-router";
 import { useRecoilState } from "recoil";
 import { chatListAtom, chatBotOpenAtom } from "Store/chatBotAtom";
 import { ChatType } from "Types/Chat";
@@ -11,8 +12,7 @@ import { ChatWrapper, SelectOption } from "./styles";
 interface IChatListProps {}
 
 const ChatList: React.FunctionComponent<IChatListProps> = () => {
-  const { id } = useParams<"id">();
-  const e = React.createElement;
+  const location = useLocation();
 
   const [chatBotOpenState, setChatBotOpenState] =
     useRecoilState(chatBotOpenAtom);
@@ -23,7 +23,7 @@ const ChatList: React.FunctionComponent<IChatListProps> = () => {
   }, [setChatBotOpenState]);
 
   const addChat = useCallback(
-    (chatContent: Element) => {
+    (chatContent: JSX.Element) => {
       const newChat: ChatType = {
         id: Math.floor(Math.random()),
         chatContent,
@@ -37,19 +37,60 @@ const ChatList: React.FunctionComponent<IChatListProps> = () => {
   const handleClickOption = useCallback(
     async (event) => {
       const data = (event.target as HTMLButtonElement).dataset.value;
+      const id = parse(location.search).id;
 
       if (data && id) {
         if (data === "menu") {
-          const response = await (await chatRequest(Number(id), data)).data;
+          const { names, nextAnswer } = await (
+            await chatRequest(Number(id), data)
+          ).data;
 
-          console.log(response);
+          const namesList = (
+            <ul>
+              <h1>메뉴판</h1>
+              {names.map((name: string) => (
+                <li>{name}</li>
+              ))}
+            </ul>
+          );
 
-          addChat(response.names);
-          addChat(response.nextAnswer);
+          const nextAnswerEl = (
+            <React.Fragment>
+              <span>{nextAnswer}</span>
+            </React.Fragment>
+          );
+
+          addChat(namesList);
+          addChat(nextAnswerEl);
+        }
+
+        if (data === "myReview") {
+          try {
+            const { reviews, nextAnswer }: any = await (
+              await chatRequest(Number(id), data)
+            ).data;
+
+            const reviewsMap = reviews.map((review: string, index: number) => (
+              <li key={index}>{review}</li>
+            ));
+
+            addChat(
+              <>
+                {reviews.length === 0
+                  ? "현재 리뷰가 존재하지 않습니다."
+                  : reviewsMap}
+              </>
+            );
+
+            addChat(<>{nextAnswer}</>);
+          } catch (error: any) {
+            console.log(error.response);
+            addChat(<>에러가 발생했습니다. 다시 시도해주세요.</>);
+          }
         }
       }
     },
-    [id, addChat]
+    [addChat, location.search]
   );
 
   const chatListMap = chatListState.map((chat) => (
@@ -74,13 +115,6 @@ const ChatList: React.FunctionComponent<IChatListProps> = () => {
               data-value="menu"
             >
               메뉴를 보고 싶어요
-            </button>
-            <button
-              className="option"
-              onClick={handleClickOption}
-              data-value="review"
-            >
-              리뷰를 보고 싶어요
             </button>
             <button
               className="option"

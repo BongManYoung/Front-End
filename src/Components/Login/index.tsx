@@ -32,6 +32,7 @@ const Login = () => {
     try {
       const res = await postSignIn(nickname, password);
       localStorage.setItem("token", res.data.token);
+      navigate("/");
     } catch (e) {
       console.log(e);
     }
