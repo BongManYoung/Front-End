@@ -7,14 +7,16 @@ import TextareaAutosize from "react-textarea-autosize";
 import SpeechRecognition, {
   useSpeechRecognition,
 } from "react-speech-recognition";
-import { useRecoilState } from "recoil";
-import { reviewInputAtom } from "Store/reviewAtom";
+import { useRecoilState, useSetRecoilState } from "recoil";
+import { reviewInputAtom, reviewsAtom } from "Store/reviewAtom";
+import { ReviewType } from "Types/Review";
 
 interface InputProps {}
 
 const ReviewInput: React.FunctionComponent<InputProps> = () => {
   const { listening, transcript } = useSpeechRecognition();
 
+  const setReviews = useSetRecoilState(reviewsAtom);
   const [reviewContent, setReviewContent] = useRecoilState(reviewInputAtom);
 
   const handleChangeReviewContent = useCallback(
@@ -32,6 +34,18 @@ const ReviewInput: React.FunctionComponent<InputProps> = () => {
     SpeechRecognition.stopListening();
   }, []);
 
+  const addReview = useCallback(() => {
+    const newReview: ReviewType = {
+      idx: Math.floor(Math.random()),
+      content: reviewContent,
+      user: {
+        idx: Math.floor(Math.random()),
+        nickname: "테스트",
+      },
+    };
+    setReviews((prevReviews) => [newReview, ...prevReviews]);
+  }, [reviewContent, setReviews]);
+
   const handleSubmitReview = useCallback(
     (event: KeyboardEvent<HTMLTextAreaElement>) => {
       if (event.shiftKey) {
@@ -39,13 +53,13 @@ const ReviewInput: React.FunctionComponent<InputProps> = () => {
       }
 
       if (event.key === "Enter") {
-        if (window.confirm(reviewContent)) {
-          alert("성공");
+        if (window.confirm("리뷰를 작성하시겠습니까?")) {
+          addReview();
           setReviewContent("");
         }
       }
     },
-    [reviewContent, setReviewContent]
+    [addReview, setReviewContent]
   );
 
   useEffect(() => {
@@ -56,7 +70,7 @@ const ReviewInput: React.FunctionComponent<InputProps> = () => {
     <React.Fragment>
       <InputWrapper>
         <TextareaAutosize
-          onKeyDown={handleSubmitReview}
+          onKeyPress={handleSubmitReview}
           className="reviewInput"
           value={reviewContent}
           onChange={handleChangeReviewContent}
