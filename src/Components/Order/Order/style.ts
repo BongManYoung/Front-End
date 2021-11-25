@@ -11,7 +11,7 @@ export const ItemWrapper = styled.div`
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  gap: 30px;
+  gap: 20px;
   width: 1200px;
   justify-content: space-between;
   overflow-y: auto;

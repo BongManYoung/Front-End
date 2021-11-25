@@ -4,6 +4,7 @@ import { reviewsAtom } from "Store/reviewAtom";
 import BestReview from "../ReviewBest";
 import ReviewInput from "../ReviewInput";
 import ReviewItem from "../ReviewItem";
+import Order from "Components/Order/Order";
 import { HeaderWrapper, ModeWrapper } from "./styles";
 
 const ReviewList = () => {
@@ -43,7 +44,9 @@ const ReviewList = () => {
 
       <ModeWrapper>
         {mode === Modes.Menu ? (
-          <React.Fragment>메뉴 리스트</React.Fragment>
+          <React.Fragment>
+            <Order />
+          </React.Fragment>
         ) : (
           <React.Fragment>
             <BestReview />
