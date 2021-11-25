@@ -1,10 +1,16 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { getProduct, getStoreList } from "utils/api/store";
 import BestShop from "./BestShop";
 import ItemBox from "./items/ItemBox";
+import { ReactComponent as Mic } from "Assets/MIC.svg";
+import { ReactComponent as MicON } from "Assets/MIC_ON.svg";
 import * as S from "./style";
 import { Promotion } from "Assets";
 import { useNavigate } from "react-router";
+import SpeechRecognition, {
+  useSpeechRecognition,
+} from "react-speech-recognition";
+import TextareaAutosize from "react-textarea-autosize";
 
 const MainPage = () => {
   const [ShopList, setShopList] = useState([]);
@@ -43,6 +49,26 @@ const MainPage = () => {
 
   const navigate = useNavigate();
 
+  const { listening, transcript } = useSpeechRecognition();
+  const handleSTTListener = useCallback(() => {
+    SpeechRecognition.startListening({ language: "ko", continuous: true });
+  }, []);
+  const handleSTTStopListening = useCallback(() => {
+    SpeechRecognition.stopListening();
+  }, []);
+  const [inputContent, setInputContent] = useState("");
+
+  const handleChangeInputContent = useCallback(
+    (e) => {
+      setInputContent(e.target.value);
+    },
+    [setInputContent]
+  );
+
+  useEffect(() => {
+    setInputContent(transcript);
+  }, [transcript, setInputContent]);
+
   return (
     <S.MainWrapper>
       <S.SliderWrapper>
@@ -55,6 +81,23 @@ const MainPage = () => {
         <p>오늘의 메뉴를 먹고 소상공인들을 위하여 응원의 리뷰를 남겨요!</p>
         <ItemBox />
       </S.ToDayWrapper>
+      <S.MicDesc>음성인식리뷰를 테스트 해보세요 !</S.MicDesc>
+      <S.InputWrapper>
+        <TextareaAutosize
+          className="Input"
+          value={inputContent}
+          onChange={handleChangeInputContent}
+        />
+        {listening ? (
+          <MicON
+            className="mic"
+            style={{ width: "15px", marginRight: "20px" }}
+            onClick={handleSTTStopListening}
+          />
+        ) : (
+          <Mic className="mic" onClick={handleSTTListener} />
+        )}
+      </S.InputWrapper>
       <img
         src={Promotion}
         alt=""
