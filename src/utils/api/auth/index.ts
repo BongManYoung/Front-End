@@ -15,3 +15,4 @@ export const postJoin = (nickname: string, password: string) => {
     data: { nickname, password },
   });
 };
+

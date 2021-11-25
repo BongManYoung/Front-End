@@ -1,8 +1,12 @@
+import { useEffect, useState } from "react";
+import { getStoreList } from "utils/api/store";
 import BestShop from "./BestShop";
 import ItemBox from "./items/ItemBox";
 import * as S from "./style";
 
-const index = () => {
+const MainPage = () => {
+  const [ShopList, setShopList] = useState();
+
   const shop_list = [
     {
       title: "경양카츠",
@@ -17,6 +21,17 @@ const index = () => {
       url: "https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyMTA5MDNfMjU2%2FMDAxNjMwNjYxMjkzMDQy.oDATAn6K3MZ45_kebEuVbf1ImV9g39TmiQhZdNSkVREg.2eYIbFYPX1a9-oAIwwiUfIX_tmZYT82g56AaDgyccoQg.JPEG.sunah9597%2FIMG_7814.jpg&type=sc960_832",
     },
   ];
+
+  useEffect(() => {
+    try {
+      getStoreList().then((res) => setShopList(res.data));
+    } catch (e) {
+      console.log(e);
+    }
+
+    console.log(ShopList);
+  }, [ShopList]);
+
   return (
     <S.MainWrapper>
       <S.SliderWrapper>
@@ -33,4 +48,4 @@ const index = () => {
   );
 };
 
-export default index;
+export default MainPage;

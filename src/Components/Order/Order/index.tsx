@@ -1,5 +1,9 @@
 import * as S from "./style";
 import Item from "../../Common/Item/Item";
+import { parse } from "query-string";
+import { useEffect, useState } from "react";
+import { getProduct, getStoreDetail } from "utils/api/store";
+import { useLocation } from "react-router";
 
 const dummy = [
   {
@@ -61,6 +65,24 @@ const dummy = [
 ];
 
 const Order: React.FC = () => {
+  const [storeDetail, setStoreDetail] = useState();
+  const [storeMenu, setStoreMenu] = useState();
+  const location = useLocation();
+
+  useEffect(() => {
+    const query = parse(location.search);
+    const id = query.id;
+
+    try {
+      getStoreDetail(id).then((res) => setStoreDetail(res.data));
+      getProduct(id).then((res) => setStoreMenu(res.data));
+    } catch (e) {
+      console.log(e);
+    }
+
+    console.log(storeDetail);
+  }, [location.search, storeDetail]);
+
   return (
     <>
       <S.Wrapper>
