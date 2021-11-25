@@ -1,9 +1,20 @@
 import { ReactComponent as Logo } from "Assets/MYD_Logo.svg";
 import { HeaderContainer } from "./HeaderStyles";
 import { NavLink, useNavigate } from "react-router-dom";
+import { HasAdminToken } from "Store/tokenAtom";
+import { useRecoilState } from "recoil";
+import { useEffect } from "react";
 
 const Header: React.FC = () => {
   const navigate = useNavigate();
+
+  const [logged, setHasToken] = useRecoilState(HasAdminToken);
+
+  useEffect(() => {
+    if (localStorage.getItem("token")) {
+      setHasToken(true);
+    }
+  }, []);
 
   return (
     <HeaderContainer>
@@ -41,7 +52,13 @@ const Header: React.FC = () => {
           >
             음성 리뷰
           </NavLink>
-          <NavLink to="/login">로그인</NavLink>
+          {logged ? (
+            <NavLink to="">로그아웃</NavLink>
+          ) : (
+            <>
+              <NavLink to="/login">로그인</NavLink>
+            </>
+          )}
         </nav>
       </div>
     </HeaderContainer>

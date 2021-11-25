@@ -1,11 +1,11 @@
 import { useCallback, useEffect, useState } from "react";
-import { getProduct, getStoreList } from "utils/api/store";
+import {  getStoreList } from "utils/api/store";
 import BestShop from "./BestShop";
 import ItemBox from "./items/ItemBox";
 import { ReactComponent as Mic } from "Assets/MIC.svg";
 import { ReactComponent as MicON } from "Assets/MIC_ON.svg";
 import * as S from "./style";
-import { Banner, Promotion } from "Assets";
+import { Banner } from "Assets";
 import { useNavigate } from "react-router";
 import SpeechRecognition, {
   useSpeechRecognition,
