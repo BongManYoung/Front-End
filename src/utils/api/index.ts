@@ -1,7 +1,7 @@
 import axios, { AxiosError } from "axios";
 
 export const MAINURL =
-  "http://d614-2001-4430-c01d-203d-e928-e658-1bbd-cb01.ngrok.io";
+  "https://aff3-2001-e60-d207-5028-6949-25c4-38b2-6f33.ngrok.io";
 
 const instance = axios.create({
   baseURL: MAINURL,
