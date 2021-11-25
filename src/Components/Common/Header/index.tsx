@@ -11,9 +11,23 @@ const Header: React.FC = () => {
         <Logo className="logo" onClick={() => navigate("/")} />
 
         <nav className="links">
-          <NavLink to="/">오늘의 메뉴</NavLink>
+          <NavLink
+            to="/"
+            onClick={() => {
+              window.scrollTo({ top: 550, left: 0, behavior: "smooth" });
+            }}
+          >
+            오늘의 메뉴
+          </NavLink>
           <NavLink to="/">이달의 리뷰</NavLink>
-          <NavLink to="/">음성 리뷰</NavLink>
+          <NavLink
+            to="/"
+            onClick={() => {
+              window.scrollTo({ top: 1400, left: 0, behavior: "smooth" });
+            }}
+          >
+            음성 리뷰
+          </NavLink>
           <NavLink to="/login">로그인</NavLink>
         </nav>
       </div>

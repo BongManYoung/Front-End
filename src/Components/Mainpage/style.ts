@@ -6,6 +6,12 @@ export const MainWrapper = styled.div`
   flex-direction: column;
   align-items: center;
   height: 100%;
+  img {
+    width: 100%;
+    height: 500px;
+    object-fit: cover;
+    cursor: pointer;
+  }
 `;
 
 export const SliderWrapper = styled.div`

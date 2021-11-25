@@ -19,9 +19,9 @@ const BestShop = ({ item }: Props) => {
       <div className="review">
         <div className="title">
           베스트 리뷰
-          <span> 5개 </span>
+          <span> {item.best} </span>
           리뷰
-          <span> 16개</span>
+          <span> {item.review}</span>
         </div>
       </div>
     </div>

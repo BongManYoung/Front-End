@@ -23,7 +23,7 @@ export const HeaderContainer = styled.header`
       margin-left: 3rem;
       text-decoration: none;
       color: black;
-      font-weight: lighter;
+      //  font-weight: lighter;
     }
   }
 `;

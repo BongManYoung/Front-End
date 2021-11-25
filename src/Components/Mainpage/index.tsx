@@ -3,6 +3,8 @@ import { getProduct, getStoreList } from "utils/api/store";
 import BestShop from "./BestShop";
 import ItemBox from "./items/ItemBox";
 import * as S from "./style";
+import { Promotion } from "Assets";
+import { useNavigate } from "react-router";
 
 const MainPage = () => {
   const [ShopList, setShopList] = useState([]);
@@ -12,14 +14,20 @@ const MainPage = () => {
     {
       title: "경양카츠",
       url: "https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyMDA3MDJfMjY4%2FMDAxNTkzNjgzMzQxOTk2.IWi4MeeyokMPJc4mV8UjY7prD4IlyewmmimEDL7W5ncg._vwGAHU4OyDazGTnJO8gT6J7MXrDsj4b9JN73qarV5kg.JPEG.rlatptn01%2FIMG_8324.JPG&type=sc960_832",
+      best: 33,
+      review: 123,
     },
     {
       title: "연정",
       url: "https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyMDAzMjZfMTcx%2FMDAxNTg1MTUxNDk4Mzkz.C0un3bzBjZpbUZlPr73hWhyUvffHgZ_lZk9CSnkf4LQg.dmrdBWjep6XA8qkdNHNqGveyxSOirUEyJ_xIVbU-DMsg.JPEG.yeon_524%2FIMG_1061.jpg&type=sc960_832",
+      best: 43,
+      review: 55,
     },
     {
-      title: "경양카츠",
+      title: "하카타분코",
       url: "https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyMTA5MDNfMjU2%2FMDAxNjMwNjYxMjkzMDQy.oDATAn6K3MZ45_kebEuVbf1ImV9g39TmiQhZdNSkVREg.2eYIbFYPX1a9-oAIwwiUfIX_tmZYT82g56AaDgyccoQg.JPEG.sunah9597%2FIMG_7814.jpg&type=sc960_832",
+      best: 36,
+      review: 146,
     },
   ];
 
@@ -33,6 +41,8 @@ const MainPage = () => {
 
   console.log(ShopList);
 
+  const navigate = useNavigate();
+
   return (
     <S.MainWrapper>
       <S.SliderWrapper>
@@ -45,6 +55,13 @@ const MainPage = () => {
         <p>오늘의 메뉴를 먹고 소상공인들을 위하여 응원의 리뷰를 남겨요!</p>
         <ItemBox />
       </S.ToDayWrapper>
+      <img
+        src={Promotion}
+        alt=""
+        onClick={() => {
+          navigate("/store");
+        }}
+      />
     </S.MainWrapper>
   );
 };
