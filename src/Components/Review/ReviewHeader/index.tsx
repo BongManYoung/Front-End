@@ -13,7 +13,7 @@ const ReviewHeader: React.FunctionComponent = () => {
   };
 
   const menusMap = useMemo(() => {
-    return shopInfo.menus.map((menu) => <option>{menu}</option>);
+    return shopInfo.menus.map((menu) => <option key={menu}>{menu}</option>);
   }, [shopInfo.menus]);
 
   return (

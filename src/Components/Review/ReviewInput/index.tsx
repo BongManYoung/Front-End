@@ -1,4 +1,4 @@
-import React, { KeyboardEvent, useCallback, useEffect, useState } from "react";
+import React, { KeyboardEvent, useCallback, useEffect } from "react";
 import { ReactComponent as Mic } from "Assets/MIC.svg";
 import { ReactComponent as MicON } from "Assets/MIC_ON.svg";
 import { InputWrapper } from "./styles";
@@ -7,19 +7,21 @@ import TextareaAutosize from "react-textarea-autosize";
 import SpeechRecognition, {
   useSpeechRecognition,
 } from "react-speech-recognition";
+import { useRecoilState } from "recoil";
+import { reviewInputAtom } from "Store/reviewAtom";
 
 interface InputProps {}
 
 const ReviewInput: React.FunctionComponent<InputProps> = () => {
   const { listening, transcript } = useSpeechRecognition();
 
-  const [reviewContent, setReviewContent] = useState<string>("");
+  const [reviewContent, setReviewContent] = useRecoilState(reviewInputAtom);
 
   const handleChangeReviewContent = useCallback(
     (event: ChangeEvent<HTMLTextAreaElement>) => {
       setReviewContent(event.target.value);
     },
-    []
+    [setReviewContent]
   );
 
   const handleSTTListener = useCallback(() => {
@@ -43,12 +45,12 @@ const ReviewInput: React.FunctionComponent<InputProps> = () => {
         }
       }
     },
-    [reviewContent]
+    [reviewContent, setReviewContent]
   );
 
   useEffect(() => {
     setReviewContent(transcript);
-  }, [transcript]);
+  }, [transcript, setReviewContent]);
 
   return (
     <React.Fragment>
