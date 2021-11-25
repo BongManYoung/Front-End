@@ -14,6 +14,49 @@ export const MainWrapper = styled.div`
   }
 `;
 
+export const MicDesc = styled.p`
+  margin-top: 200px;
+  font-size: 24px;
+`;
+
+export const InputWrapper = styled.div`
+  display: flex;
+  background-color: #fff;
+  margin: 0 auto;
+  margin-top: 80px;
+  margin-bottom: 250px;
+  width: 800px;
+  padding: 0.5rem;
+  border-radius: 5px;
+  overflow: hidden;
+  height: 100%;
+  border-top: 0.5px solid black;
+  border-left: 0.5px solid black;
+  border-right: 0.5px solid black;
+  border-bottom: 3px solid #6b1aee;
+
+  .Input {
+    width: 100%;
+    height: 100%;
+    background-color: inherit;
+    border: none;
+    resize: none;
+    font-size: 22px;
+    font-weight: lighter;
+    padding: 5px;
+  }
+  .mic {
+    cursor: pointer;
+    width: 18px;
+  }
+  .listening {
+    width: 100px;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+  }
+`;
+
 export const SliderWrapper = styled.div`
   display: flex;
   flex-direction: row;
