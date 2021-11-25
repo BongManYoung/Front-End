@@ -4,6 +4,8 @@ import { parse } from "query-string";
 import { useEffect, useState } from "react";
 import { getProduct, getStoreDetail } from "utils/api/store";
 import { useLocation } from "react-router";
+import { useRecoilState, useSetRecoilState } from "recoil";
+import { storeAtom, storeMenuAtom } from "Store/storeAtom";
 
 const dummy = [
   {
@@ -71,7 +73,8 @@ const dummy = [
 ];
 
 const Order: React.FC = () => {
-  const [storeDetail, setStoreDetail] = useState();
+  const [storeDetail, setStoreDetail] = useRecoilState(storeAtom);
+  const setMenuAtom = useSetRecoilState(storeMenuAtom);
   const [storeMenu, setStoreMenu] = useState();
   const location = useLocation();
 
@@ -80,12 +83,14 @@ const Order: React.FC = () => {
     const id = query.id;
 
     try {
-      getStoreDetail(id).then((res) => setStoreDetail(res.data));
-      getProduct(id).then((res) => setStoreMenu(res.data));
+      getStoreDetail(id).then((res) => setStoreDetail(res.data.data));
+      getProduct(id).then((res) => setStoreMenu(res.data.data));
     } catch (e) {
       console.log(e);
     }
-  }, [location.search]);
+
+    setMenuAtom(storeDetail?.products);
+  }, [location.search, setMenuAtom]);
 
   console.log(storeDetail);
 

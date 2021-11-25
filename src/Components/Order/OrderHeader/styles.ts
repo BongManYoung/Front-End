@@ -4,7 +4,6 @@ export const HeaderWrapper = styled.section`
   display: flex;
   justify-content: center;
   margin-top: 3rem;
-
   .shop_pic {
     width: 360px;
     margin-right: 1rem;

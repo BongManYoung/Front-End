@@ -3,6 +3,11 @@ import styled from "@emotion/styled";
 export const HeaderContainer = styled.header`
   width: 100%;
   height: 60px;
+  position: fixed;
+  top: 0;
+
+  background-color: white;
+  z-index: 5;
 
   .header {
     margin: 0 auto;
