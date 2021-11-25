@@ -24,36 +24,42 @@ const ReviewHeader: React.FunctionComponent = () => {
   };
 
   return (
-    <>
-      <React.Fragment>
-        <HeaderWrapper>
-          <img
-            src={shopInfo.shopImage}
-            alt={shopInfo.title}
-            className="shop_pic"
-          />
+    <React.Fragment>
+      <HeaderWrapper>
+        <img
+          src={shopInfo.shopImage}
+          alt={shopInfo.title}
+          className="shop_pic"
+        />
 
-          <div className="shop_info">
-            <div className="deco"></div>
+        <div className="shop_info">
+          <div className="deco"></div>
+          <div className="shop_title-wrap">
+            <div className="shop_title_line" />
             <h1 className="shop_title">{shopInfo.title}</h1>
-            <span className="shop_position">{shopInfo.position}</span>
-            <p className="shop_content">{shopInfo.content}</p>
-            <div className="shop_menus">
-              <strong className="shop_menus_title">메뉴 선택</strong>
-              <select>{menusMap}</select>
-            </div>
-
-            <div className="buttons">
-              <button className="special" onClick={() => setShow(true)}>
-                주문하기
-              </button>
-              <button onClick={() => {}}>예약하기</button>
-            </div>
           </div>
-        </HeaderWrapper>
-        <OrderModal show={show} closeShow={closeShow} />
-      </React.Fragment>
-    </>
+          <div className="shop_review_wrapper">
+            <span className="shop_position">리뷰 {shopInfo.review_total}</span>
+            <span className="shop_position">
+              베스트 리뷰 {shopInfo.best_total}
+            </span>
+          </div>
+          <p className="shop_content">{shopInfo.content}</p>
+          <div className="shop_menus">
+            <strong className="shop_menus_title">메뉴 선택</strong>
+            <select>{menusMap}</select>
+          </div>
+
+          <div className="buttons">
+            <button className="special" onClick={() => setShow(true)}>
+              주문하기
+            </button>
+            <button onClick={() => {}}>예약하기</button>
+          </div>
+        </div>
+      </HeaderWrapper>
+      <OrderModal show={show} closeShow={closeShow} />
+    </React.Fragment>
   );
 };
 
