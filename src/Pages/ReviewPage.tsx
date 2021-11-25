@@ -1,4 +1,5 @@
 import styled from "@emotion/styled";
+import ChatBot from "Components/ChatBot";
 import Footer from "Components/Common/Footer";
 import Header from "Components/Common/Header";
 import ReviewHeader from "Components/Review/ReviewHeader";
@@ -18,6 +19,8 @@ const ReviewPage: React.FunctionComponent = () => {
         <ReviewList />
       </ReviewPageView>
       <Footer />
+
+      <ChatBot />
     </React.Fragment>
   );
 };

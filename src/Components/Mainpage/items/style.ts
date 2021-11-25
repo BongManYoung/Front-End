@@ -6,6 +6,7 @@ export const ItemBoxWrapper = styled.div`
   display: flex;
   flex-direction: row;
   flex: wrap;
+  justify-content: center;
   gap: 30px;
   overflow-y: auto;
 

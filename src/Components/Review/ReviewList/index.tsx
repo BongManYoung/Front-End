@@ -8,6 +8,7 @@ import ReviewItem from "../ReviewItem";
 import Order from "Components/Order/Order";
 import { HeaderWrapper, ModeWrapper } from "./styles";
 import { useLocation, useNavigate } from "react-router";
+import { getReview } from "utils/api/review";
 
 enum Modes {
   Menu = "menu",
@@ -39,6 +40,12 @@ const ReviewList = () => {
       setMode("menu" as TMode);
     } else {
       setMode(mode as TMode);
+    }
+
+    try {
+      getReview(1).then();
+    } catch (e: any) {
+      throw Error(e);
     }
   }, [location, setMode]);
 
