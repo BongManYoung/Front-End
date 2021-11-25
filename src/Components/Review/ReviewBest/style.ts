@@ -2,6 +2,7 @@ import styled from "@emotion/styled";
 
 export const BestWrapper = styled.div`
   width: 100%;
+  margin-bottom: 30px;
 
   .best_title {
     padding: 15px 0;
