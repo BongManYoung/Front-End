@@ -1,7 +1,7 @@
 import React, { useCallback } from "react";
 import { parse } from "query-string";
 import { useLocation } from "react-router";
-import { useRecoilState } from "recoil";
+import { useRecoilState, useSetRecoilState } from "recoil";
 import { chatListAtom, chatBotOpenAtom } from "Store/chatBotAtom";
 import { ChatType } from "Types/Chat";
 import { chatRequest } from "utils/api/chat";
@@ -14,8 +14,7 @@ interface IChatListProps {}
 const ChatList: React.FunctionComponent<IChatListProps> = () => {
   const location = useLocation();
 
-  const [chatBotOpenState, setChatBotOpenState] =
-    useRecoilState(chatBotOpenAtom);
+  const setChatBotOpenState = useSetRecoilState(chatBotOpenAtom);
   const [chatListState, setChatListState] = useRecoilState(chatListAtom);
 
   const handleCloseChatBot = useCallback(() => {
@@ -23,11 +22,11 @@ const ChatList: React.FunctionComponent<IChatListProps> = () => {
   }, [setChatBotOpenState]);
 
   const addChat = useCallback(
-    (chatContent: JSX.Element) => {
+    (chatContent: JSX.Element, isMyChat: boolean = false) => {
       const newChat: ChatType = {
-        id: Math.floor(Math.random()),
+        id: Math.floor(Math.random() + 1000),
         chatContent,
-        isMyChat: false,
+        isMyChat: isMyChat,
       };
       setChatListState((prevState) => [...prevState, newChat]);
     },
