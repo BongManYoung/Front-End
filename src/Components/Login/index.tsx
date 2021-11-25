@@ -4,6 +4,9 @@ import { ReactComponent as Logo } from "Assets/MYD_Logo.svg";
 import * as S from "./style";
 import { Link } from "react-router-dom";
 import { postSignIn } from "utils/api/auth";
+import { ToastError, ToastSuccess } from "Hook/toastHook";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -33,8 +36,10 @@ const Login = () => {
       const res = await postSignIn(nickname, password);
       localStorage.setItem("token", res.data.token);
       navigate("/");
+      ToastSuccess("로그인에 성공했습니다.");
     } catch (e) {
       console.log(e);
+      ToastError("로그인에 실패했습니다.");
     }
   };
 
@@ -46,51 +51,56 @@ const Login = () => {
   }, [nickname, nickname.length, password]);
 
   return (
-    <S.Wrapper>
-      <S.LoginWrapper onSubmit={(e) => onSubmit(e, nickname, password)}>
-        <Logo onClick={() => navigate("/")} />
-        <S.InputWrapper>
-          <div className="input-item-wrap">
-            <input
-              type="text"
-              placeholder="닉네임을 입력해주세요"
-              name="nickname"
-              value={nickname}
-              onChange={(e) => onChange(e)}
-              style={{
-                borderBottom: emailBor
-                  ? `2px solid #5271FF`
-                  : `2px solid #c4c4c4`,
-              }}
-            />
-          </div>
-          <div className="input-item-wrap">
-            <input
-              type="password"
-              placeholder="비밀번호를 입력해주세요"
-              name="password"
-              value={password}
-              onChange={(e) => onChange(e)}
-              style={{
-                borderBottom: passwordBor
-                  ? `2px solid #5271FF`
-                  : `2px solid #c4c4c4`,
-              }}
-            />
-          </div>
-        </S.InputWrapper>
-        <button
-          style={
-            buttonColor ? { background: "#5271ff" } : { background: "#c7c7c7" }
-          }
-        >
-          Login
-        </button>
-        <p>
-          회원이 아니신가요? <Link to="/join">회원가입</Link>
-        </p>
-      </S.LoginWrapper>
-    </S.Wrapper>
+    <>
+      <ToastContainer />
+      <S.Wrapper>
+        <S.LoginWrapper onSubmit={(e) => onSubmit(e, nickname, password)}>
+          <Logo onClick={() => navigate("/")} />
+          <S.InputWrapper>
+            <div className="input-item-wrap">
+              <input
+                type="text"
+                placeholder="닉네임을 입력해주세요"
+                name="nickname"
+                value={nickname}
+                onChange={(e) => onChange(e)}
+                style={{
+                  borderBottom: emailBor
+                    ? `2px solid #5271FF`
+                    : `2px solid #c4c4c4`,
+                }}
+              />
+            </div>
+            <div className="input-item-wrap">
+              <input
+                type="password"
+                placeholder="비밀번호를 입력해주세요"
+                name="password"
+                value={password}
+                onChange={(e) => onChange(e)}
+                style={{
+                  borderBottom: passwordBor
+                    ? `2px solid #5271FF`
+                    : `2px solid #c4c4c4`,
+                }}
+              />
+            </div>
+          </S.InputWrapper>
+          <button
+            style={
+              buttonColor
+                ? { background: "#5271ff" }
+                : { background: "#c7c7c7" }
+            }
+          >
+            Login
+          </button>
+          <p>
+            회원이 아니신가요? <Link to="/join">회원가입</Link>
+          </p>
+        </S.LoginWrapper>
+      </S.Wrapper>
+    </>
   );
 };
 
