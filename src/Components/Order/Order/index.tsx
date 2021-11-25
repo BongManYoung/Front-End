@@ -79,9 +79,9 @@ const Order: React.FC = () => {
     } catch (e) {
       console.log(e);
     }
+  }, [location.search]);
 
-    console.log(storeDetail);
-  }, [location.search, storeDetail]);
+  console.log(storeDetail);
 
   return (
     <>
