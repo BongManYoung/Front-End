@@ -20,3 +20,10 @@ export const chatRequest = (storeId: number, url: string) => {
     });
   }
 };
+
+export const randomMenuRequest = (storeId: number, message: string) => {
+  return request({
+    url: `/${storeId}/random-menu/${message}`,
+    method: "get",
+  });
+};
