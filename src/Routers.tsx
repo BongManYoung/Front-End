@@ -4,7 +4,6 @@ import MainPage from "./Pages/MainPage";
 import LoginPage from "./Pages/LoginPage";
 import JoinPage from "./Pages/JoinPage";
 import ReviewPage from "Pages/ReviewPage";
-import OrderPage from "Pages/OrderPage";
 
 const Routers = () => {
   return (
