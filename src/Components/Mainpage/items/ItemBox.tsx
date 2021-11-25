@@ -1,7 +1,9 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import * as S from "./style";
 
 interface shopInfoType {
+  id: number;
   shopImage: string;
   title: string;
   menu: string;
@@ -9,6 +11,8 @@ interface shopInfoType {
 }
 
 const ItemBox = () => {
+  const navigate = useNavigate();
+
   const shopInfo: shopInfoType[] = [
     {
       shopImage:
@@ -16,6 +20,7 @@ const ItemBox = () => {
       title: "짬뽕과 손님 2호점",
       menu: "삼선 짬뽕",
       price: 18000,
+      id: 1,
     },
     {
       shopImage:
@@ -23,6 +28,7 @@ const ItemBox = () => {
       title: "짬뽕과 손님 2호점",
       menu: "삼선 짬뽕",
       price: 18000,
+      id: 2,
     },
     {
       shopImage:
@@ -30,6 +36,7 @@ const ItemBox = () => {
       title: "짬뽕과 손님 2호점",
       menu: "삼선 짬뽕",
       price: 18000,
+      id: 3,
     },
     {
       shopImage:
@@ -37,6 +44,7 @@ const ItemBox = () => {
       title: "짬뽕과 손님 2호점",
       menu: "삼선 짬뽕",
       price: 18000,
+      id: 4,
     },
     {
       shopImage:
@@ -44,6 +52,7 @@ const ItemBox = () => {
       title: "짬뽕과 손님 2호점",
       menu: "삼선 짬뽕",
       price: 18000,
+      id: 5,
     },
     {
       shopImage:
@@ -51,20 +60,18 @@ const ItemBox = () => {
       title: "짬뽕과 손님 2호점",
       menu: "삼선 짬뽕",
       price: 18000,
-    },
-    {
-      shopImage:
-        "https://recipe1.ezmember.co.kr/cache/recipe/2016/12/30/df939769792632a48a0eba8bc895e8601.jpg",
-      title: "짬뽕과 손님 2호점",
-      menu: "삼선 짬뽕",
-      price: 18000,
+      id: 6,
     },
   ];
 
   return (
     <S.ItemBoxWrapper>
       {shopInfo.map((item, index) => (
-        <div className="item-box" key={index}>
+        <div
+          className="item-box"
+          key={item.id}
+          onClick={() => navigate(`/store/${item.id}`)}
+        >
           <img src={item.shopImage} alt="" />
           <div className="shop-info">
             <span>{item.title}</span>

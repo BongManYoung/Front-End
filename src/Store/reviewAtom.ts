@@ -19,3 +19,12 @@ export const reviewsAtom = atom<ReviewType[]>({
     { idx: 3, content: "바보", user: { idx: 1, nickname: "새찬" } },
   ],
 });
+
+enum Modes {
+  Menu = "menu",
+  Review = "review",
+}
+export const reviewModeAtom = atom({
+  key: "__REVIEW_MODE__",
+  default: Modes.Menu,
+});
