@@ -23,11 +23,11 @@ const ChatList: React.FunctionComponent<IChatListProps> = () => {
   }, [setChatBotOpenState]);
 
   const addChat = useCallback(
-    (chatContent: JSX.Element) => {
+    (chatContent: JSX.Element, isMyChat: boolean = false) => {
       const newChat: ChatType = {
-        id: Math.floor(Math.random()),
+        id: Math.floor(Math.random() + 1000),
         chatContent,
-        isMyChat: false,
+        isMyChat: isMyChat,
       };
       setChatListState((prevState) => [...prevState, newChat]);
     },

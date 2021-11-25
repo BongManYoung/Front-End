@@ -11,7 +11,7 @@ const ChatItem: React.FunctionComponent<IChatItemProps> = ({
 }) => {
   return (
     <React.Fragment>
-      <ChatWrapper>
+      <ChatWrapper isMyChat={isMyChat}>
         {children}
         <p>{chatContent}</p>
       </ChatWrapper>
