@@ -1,5 +1,6 @@
-import React, { useMemo } from "react";
+import React, { useMemo, useState } from "react";
 import { HeaderWrapper } from "./styles";
+import OrderModal from "Components/Order/OrderModal/OrderModal";
 
 const ReviewHeader: React.FunctionComponent = () => {
   const shopInfo = {
@@ -16,6 +17,12 @@ const ReviewHeader: React.FunctionComponent = () => {
   const menusMap = useMemo(() => {
     return shopInfo.menus.map((menu) => <option key={menu}>{menu}</option>);
   }, [shopInfo.menus]);
+
+  const [show, setShow] = useState(false);
+
+  const closeShow = () => {
+    setShow(false);
+  };
 
   return (
     <React.Fragment>
@@ -45,13 +52,14 @@ const ReviewHeader: React.FunctionComponent = () => {
           </div>
 
           <div className="buttons">
-            <button className="special" onClick={() => {}}>
+            <button className="special" onClick={() => setShow(true)}>
               주문하기
             </button>
             <button onClick={() => {}}>예약하기</button>
           </div>
         </div>
       </HeaderWrapper>
+      <OrderModal show={show} closeShow={closeShow} />
     </React.Fragment>
   );
 };
