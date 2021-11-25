@@ -27,7 +27,7 @@ const ReviewPage: React.FunctionComponent = () => {
 
 const ReviewPageView = styled.main`
   width: 1000px;
-  margin: 40px auto;
+  margin: 100px auto;
 `;
 
 export default ReviewPage;

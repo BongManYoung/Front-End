@@ -1,11 +1,18 @@
 import React, { useMemo, useState } from "react";
 import { HeaderWrapper } from "./styles";
 import OrderModal from "Components/Order/OrderModal/OrderModal";
+import { useRecoilValue } from "recoil";
+import { storeAtom, storeMenuAtom } from "Store/storeAtom";
 
 const ReviewHeader: React.FunctionComponent = () => {
+  const menuAtom = useRecoilValue(storeMenuAtom);
+  const storeDetail = useRecoilValue(storeAtom);
+
+  console.log(storeDetail);
+
   const shopInfo = {
     shopImage:
-      "https://images.velog.io/images/hjh040302/post/0dd75b88-55ac-4bfc-9e2c-8ac0fe31fdac/image.png",
+      "https://i.pinimg.com/originals/02/04/2f/02042fa0aca55650fc573c56aa80cc08.jpg",
     title: "짬뽕과 손님 2호점",
     review_total: 43,
     best_total: 2,
@@ -15,8 +22,10 @@ const ReviewHeader: React.FunctionComponent = () => {
   };
 
   const menusMap = useMemo(() => {
-    return shopInfo.menus.map((menu) => <option key={menu}>{menu}</option>);
-  }, [shopInfo.menus]);
+    return menuAtom.map((menu, index) => (
+      <option key={index}>{menu.productName}</option>
+    ));
+  }, [menuAtom]);
 
   const [show, setShow] = useState(false);
 
@@ -37,7 +46,7 @@ const ReviewHeader: React.FunctionComponent = () => {
           <div className="deco"></div>
           <div className="shop_title-wrap">
             <div className="shop_title_line" />
-            <h1 className="shop_title">{shopInfo.title}</h1>
+            <h1 className="shop_title">{storeDetail.storeName}</h1>
           </div>
           <div className="shop_review_wrapper">
             <span className="shop_position">리뷰 {shopInfo.review_total}</span>
