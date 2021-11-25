@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect, useState } from "react";
-import { ChatInputWrapper } from "./styles";
+import { ChatInputWrapper, InputWrapper } from "./styles";
 import * as S from "./styles";
 import { ReactComponent as Mic } from "Assets/MIC.svg";
 import { ReactComponent as MicON } from "Assets/MIC_ON.svg";
@@ -98,7 +98,7 @@ const ChatInput: React.FunctionComponent<IChatInputProps> = () => {
           <Mic className="mic" onClick={stop} />
         )} */}
       {/* </ChatInputWrapper> */}
-      <S.InputWrapper>
+      <InputWrapper>
         <TextareaAutosize
           placeholder="메세지를 입력해주세요."
           className="Input"
@@ -115,7 +115,7 @@ const ChatInput: React.FunctionComponent<IChatInputProps> = () => {
         ) : (
           <Mic className="mic" onClick={handleSTTListener} />
         )}
-      </S.InputWrapper>
+      </InputWrapper>
     </React.Fragment>
   );
 };
