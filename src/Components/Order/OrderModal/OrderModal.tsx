@@ -23,9 +23,9 @@ const OrderModal: React.FC<ModalProps> = ({ show, closeShow }) => {
           <S.Close onClick={closeShow}>X</S.Close>
         </S.Title>
         <S.OrderDesc>
-          <span>메뉴 : 간짜장 (1), 해물짬뽕 (2)</span>
-          <span>금액 : 17000 원</span>
-          <span>주소 : 광주 광산구 상무대로 312 3층</span>
+          <span>메뉴 : 아메리카노, 카페라떼</span>
+          <span>금액 : 9800 원</span>
+          <span>주소 : 광주 광산구 상무대로 312</span>
         </S.OrderDesc>
         <S.BtnWrapper>
           <button onClick={onConfirm}>확인</button>

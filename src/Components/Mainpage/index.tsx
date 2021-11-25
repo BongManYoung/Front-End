@@ -5,6 +5,7 @@ import ItemBox from "./items/ItemBox";
 import * as S from "./style";
 import { Promotion } from "Assets";
 import { useNavigate } from "react-router";
+import VoiceTest from "./VoiceTest";
 
 const MainPage = () => {
   const [ShopList, setShopList] = useState([]);
@@ -55,6 +56,7 @@ const MainPage = () => {
         <p>오늘의 메뉴를 먹고 소상공인들을 위하여 응원의 리뷰를 남겨요!</p>
         <ItemBox />
       </S.ToDayWrapper>
+      <VoiceTest />
       <img
         src={Promotion}
         alt=""
