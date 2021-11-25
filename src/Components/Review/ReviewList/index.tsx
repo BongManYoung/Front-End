@@ -1,5 +1,8 @@
 import React, { MouseEvent, useState } from "react";
+import { useRecoilValue } from "recoil";
+import { reviewsAtom } from "Store/reviewAtom";
 import ReviewInput from "../ReviewInput";
+import ReviewItem from "../ReviewItem";
 import { HeaderWrapper, ModeWrapper } from "./styles";
 
 const ReviewList = () => {
@@ -7,12 +10,16 @@ const ReviewList = () => {
     Menu,
     Review,
   }
-
+  const reviews = useRecoilValue(reviewsAtom);
   const [mode, setMode] = useState(Modes.Menu);
 
   const toggleMode = (event: MouseEvent) => {
     setMode(parseInt((event.target as HTMLDivElement).id, 10));
   };
+
+  const reviewsMap = reviews.map((review) => (
+    <ReviewItem key={review.idx} {...review} />
+  ));
 
   return (
     <React.Fragment>
@@ -40,6 +47,7 @@ const ReviewList = () => {
           <React.Fragment>
             <span className="inputTitle">리뷰 작성</span>
             <ReviewInput />
+            {reviewsMap}
           </React.Fragment>
         )}
       </ModeWrapper>
