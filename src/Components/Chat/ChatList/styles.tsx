@@ -37,6 +37,7 @@ export const ChatWrapper = styled.div`
 
   .chat_list {
     height: 76%;
+    overflow-y: auto;
   }
 `;
 
