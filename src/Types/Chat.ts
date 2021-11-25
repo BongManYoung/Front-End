@@ -1,5 +1,5 @@
 export interface ChatType {
   id: number;
-  chatContent: Element | string;
+  chatContent: JSX.Element | string;
   isMyChat: boolean;
 }
