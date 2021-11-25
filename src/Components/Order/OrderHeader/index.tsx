@@ -13,7 +13,9 @@ const OrderHeader: React.FunctionComponent = () => {
   };
 
   const menusMap = useMemo(() => {
-    return shopInfo.menus.map((menu) => <option>{menu}</option>);
+    return shopInfo.menus.map((menu, index) => (
+      <option key={index}>{menu}</option>
+    ));
   }, [shopInfo.menus]);
 
   return (
