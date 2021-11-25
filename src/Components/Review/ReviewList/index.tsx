@@ -86,7 +86,7 @@ const ReviewList = () => {
               <>작성된 리뷰가 없습니다.</>
             ) : (
               <>
-                {reviews.map((item, index) => (
+                {reviews?.map((item, index) => (
                   <ReviewItem review={item} key={index} />
                 ))}
               </>
