@@ -5,12 +5,14 @@ export const ChatWrapper = styled.div`
   right: 3rem;
   bottom: 3rem;
   overflow: hidden;
-  width: 350px;
-  height: 70vh;
+  width: 380px;
+  height: 75vh;
   background-color: white;
   border-radius: 20px;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   z-index: 9999;
+  display: flex;
+  flex-direction: column;
 
   .chat_header {
     width: 100%;
@@ -31,5 +33,9 @@ export const ChatWrapper = styled.div`
       color: #f2f2f2;
       font-weight: bold;
     }
+  }
+
+  .chat_list {
+    height: 76%;
   }
 `;

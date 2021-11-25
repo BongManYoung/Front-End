@@ -1,6 +1,7 @@
 import React, { useCallback } from "react";
 import { useRecoilState } from "recoil";
-import { chatBotOpenAtom } from "Store/chatBotAtom";
+import { chatListAtom, chatBotOpenAtom } from "Store/chatBotAtom";
+import ChatInput from "../ChatInput";
 import { ChatWrapper } from "./styles";
 
 interface IChatListProps {}
@@ -8,6 +9,7 @@ interface IChatListProps {}
 const ChatList: React.FunctionComponent<IChatListProps> = () => {
   const [chatBotOpenState, setChatBotOpenState] =
     useRecoilState(chatBotOpenAtom);
+  const [chatListState, setChatListState] = useRecoilState(chatListAtom);
 
   const handleCloseChatBot = useCallback(() => {
     setChatBotOpenState(false);
@@ -22,7 +24,8 @@ const ChatList: React.FunctionComponent<IChatListProps> = () => {
             &times;
           </div>
         </header>
-        <ul></ul>
+        <ul className="chat_list"></ul>
+        <ChatInput />
       </ChatWrapper>
     </React.Fragment>
   );
