@@ -30,7 +30,12 @@ const ReviewList = () => {
 
   useEffect(() => {
     const mode = parse(location.search).mode;
-    setMode(mode as TMode);
+
+    if (!mode) {
+      setMode("menu" as TMode);
+    } else {
+      setMode(mode as TMode);
+    }
   }, [location, setMode]);
 
   return (
