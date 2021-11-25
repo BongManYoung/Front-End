@@ -5,7 +5,7 @@ import ItemBox from "./items/ItemBox";
 import { ReactComponent as Mic } from "Assets/MIC.svg";
 import { ReactComponent as MicON } from "Assets/MIC_ON.svg";
 import * as S from "./style";
-import { Promotion } from "Assets";
+import { Banner, Promotion } from "Assets";
 import { useNavigate } from "react-router";
 import SpeechRecognition, {
   useSpeechRecognition,
@@ -102,7 +102,7 @@ const MainPage = () => {
       </S.VoiceTest>
 
       <img
-        src={Promotion}
+        src={Banner}
         alt=""
         onClick={() => {
           navigate("/store");
