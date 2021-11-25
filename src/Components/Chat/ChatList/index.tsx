@@ -2,7 +2,8 @@ import React, { useCallback } from "react";
 import { useRecoilState } from "recoil";
 import { chatListAtom, chatBotOpenAtom } from "Store/chatBotAtom";
 import ChatInput from "../ChatInput";
-import { ChatWrapper } from "./styles";
+import ChatItem from "../ChatItem";
+import { ChatWrapper, SelectOption } from "./styles";
 
 interface IChatListProps {}
 
@@ -15,6 +16,8 @@ const ChatList: React.FunctionComponent<IChatListProps> = () => {
     setChatBotOpenState(false);
   }, [setChatBotOpenState]);
 
+  const chatListMap = chatListState.map((chat) => <ChatItem {...chat} />);
+
   return (
     <React.Fragment>
       <ChatWrapper>
@@ -24,7 +27,15 @@ const ChatList: React.FunctionComponent<IChatListProps> = () => {
             &times;
           </div>
         </header>
-        <ul className="chat_list"></ul>
+        <ul className="chat_list">
+          <SelectOption>
+            <p>궁금하신 점 있으신가요?</p>
+            <button className="option">메뉴를 보고 싶어요</button>
+            <button className="option">리뷰를 보고 싶어요</button>
+            <button className="option">내가 남긴 리뷰를 보고 싶어요</button>
+          </SelectOption>
+          {chatListMap}
+        </ul>
         <ChatInput />
       </ChatWrapper>
     </React.Fragment>
