@@ -1,4 +1,4 @@
-import React, { KeyboardEvent, useCallback, useEffect, useState } from "react";
+import React, { KeyboardEvent, useCallback, useEffect } from "react";
 import { ReactComponent as Mic } from "Assets/MIC.svg";
 import { ReactComponent as MicON } from "Assets/MIC_ON.svg";
 import { InputWrapper } from "./styles";
@@ -7,19 +7,23 @@ import TextareaAutosize from "react-textarea-autosize";
 import SpeechRecognition, {
   useSpeechRecognition,
 } from "react-speech-recognition";
+import { useRecoilState, useSetRecoilState } from "recoil";
+import { reviewInputAtom, reviewsAtom } from "Store/reviewAtom";
+import { ReviewType } from "Types/Review";
 
 interface InputProps {}
 
 const ReviewInput: React.FunctionComponent<InputProps> = () => {
   const { listening, transcript } = useSpeechRecognition();
 
-  const [reviewContent, setReviewContent] = useState<string>("");
+  const setReviews = useSetRecoilState(reviewsAtom);
+  const [reviewContent, setReviewContent] = useRecoilState(reviewInputAtom);
 
   const handleChangeReviewContent = useCallback(
     (event: ChangeEvent<HTMLTextAreaElement>) => {
       setReviewContent(event.target.value);
     },
-    []
+    [setReviewContent]
   );
 
   const handleSTTListener = useCallback(() => {
@@ -30,6 +34,18 @@ const ReviewInput: React.FunctionComponent<InputProps> = () => {
     SpeechRecognition.stopListening();
   }, []);
 
+  const addReview = useCallback(() => {
+    const newReview: ReviewType = {
+      idx: Math.floor(Math.random()),
+      content: reviewContent,
+      user: {
+        idx: Math.floor(Math.random()),
+        nickname: "테스트",
+      },
+    };
+    setReviews((prevReviews) => [newReview, ...prevReviews]);
+  }, [reviewContent, setReviews]);
+
   const handleSubmitReview = useCallback(
     (event: KeyboardEvent<HTMLTextAreaElement>) => {
       if (event.shiftKey) {
@@ -37,24 +53,24 @@ const ReviewInput: React.FunctionComponent<InputProps> = () => {
       }
 
       if (event.key === "Enter") {
-        if (window.confirm(reviewContent)) {
-          alert("성공");
+        if (window.confirm("리뷰를 작성하시겠습니까?")) {
+          addReview();
           setReviewContent("");
         }
       }
     },
-    [reviewContent]
+    [addReview, setReviewContent]
   );
 
   useEffect(() => {
     setReviewContent(transcript);
-  }, [transcript]);
+  }, [transcript, setReviewContent]);
 
   return (
     <React.Fragment>
       <InputWrapper>
         <TextareaAutosize
-          onKeyDown={handleSubmitReview}
+          onKeyPress={handleSubmitReview}
           className="reviewInput"
           value={reviewContent}
           onChange={handleChangeReviewContent}
