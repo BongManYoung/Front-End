@@ -9,28 +9,34 @@ import {
   cancelDisLike,
   cancelLike,
 } from "utils/api/review";
+import { useLocation } from "react-router";
+import { parse } from "query-string";
 
 type IReviewItemProps = ReviewType;
 
 const ReviewItem: FunctionComponent<IReviewItemProps> = ({ content, user }) => {
   const [buttonSelect, setButtonSelect] = useState<boolean>(false);
   const [worstButton, setWorstButton] = useState<boolean>(false);
+  const location = useLocation();
+  const query = parse(location.search);
+
+  const id = query.id;
 
   const onClickButton = () => {
     setButtonSelect(!buttonSelect);
     setWorstButton(false);
-    addLike(1);
+    addLike(id);
     if (buttonSelect) {
-      cancelLike(1);
+      cancelLike(id);
     }
   };
 
   const onClickWorst = () => {
     setWorstButton(!worstButton);
     setButtonSelect(false);
-    addDisLike(1);
+    addDisLike(id);
     if (worstButton) {
-      cancelDisLike(1);
+      cancelDisLike(id);
     }
   };
 

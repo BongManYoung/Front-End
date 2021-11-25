@@ -75,7 +75,7 @@ export const BtnWrapper = styled.div`
   justify-content: space-around;
   margin-top: 170px;
   width: 300px;
-  button:nth-child(1) {
+  button:nth-of-type(1) {
     width: 100px;
     height: 40px;
     background-color: #6b1aee;
@@ -85,7 +85,7 @@ export const BtnWrapper = styled.div`
     border-radius: 5px;
     cursor: pointer;
   }
-  button:nth-child(2) {
+  button:nth-of-type(2) {
     width: 100px;
     height: 40px;
     background-color: white;

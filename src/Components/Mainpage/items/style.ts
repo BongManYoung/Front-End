@@ -22,11 +22,11 @@ export const ItemBoxWrapper = styled.div`
       display: flex;
       flex-direction: column;
 
-      span:nth-child(1) {
+      span:nth-of-type(1) {
         color: #cbcbcb;
       }
 
-      span:nth-child(3) {
+      span:nth-of-type(3) {
         font-weight: 500;
         color: #8fa3ff;
       }

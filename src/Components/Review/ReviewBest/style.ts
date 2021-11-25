@@ -14,11 +14,11 @@ export const BestWrapper = styled.div`
     font-size: 18px;
 
     .title_wrapper {
-      span:nth-child(1) {
+      span:nth-of-type(1) {
         font-weight: 500;
       }
 
-      span:nth-child(2) {
+      span:nth-of-type(2) {
         font-weight: 500;
         color: #ff3636;
       }
