@@ -1,6 +1,6 @@
 import axios, { AxiosError } from "axios";
 
-export const MAINURL = "http://51cb-14-50-190-128.ngrok.io";
+export const MAINURL = "http://118.67.143.13:8011";
 
 const instance = axios.create({
   baseURL: MAINURL,
