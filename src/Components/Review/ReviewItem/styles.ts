@@ -3,7 +3,9 @@ import styled from "@emotion/styled";
 export const CommentWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  margin: 3rem 0;
+  padding: 2.5rem 0;
+  box-sizing: border-box;
+  border-bottom: 1px solid #e3e3e3;
 
   .reviewHeader {
     display: flex;
@@ -19,13 +21,15 @@ export const CommentWrapper = styled.div`
     }
 
     .nickname {
+      font-size: 16px;
       margin-left: 1rem;
     }
   }
 
   .reviewContent {
-    padding: 0.4rem;
-    background-color: #f2f2f2;
+    width: fit-content;
+    padding: 0.4rem 1rem;
+    background-color: #f9f9f9;
     color: #000000;
     border-radius: 5px;
   }
