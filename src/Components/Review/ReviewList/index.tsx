@@ -7,7 +7,8 @@ import ReviewInput from "../ReviewInput";
 import ReviewItem from "../ReviewItem";
 import Order from "Components/Order/Order";
 import { HeaderWrapper, ModeWrapper } from "./styles";
-import { useLocation } from "react-router";
+import { useLocation, useNavigate } from "react-router";
+import { useSearchParams } from "react-router-dom";
 
 enum Modes {
   Menu = "menu",
@@ -17,11 +18,15 @@ type TMode = Modes.Menu | Modes.Review;
 
 const ReviewList = () => {
   const location = useLocation();
+  const navigate = useNavigate();
   const reviews = useRecoilValue(reviewsAtom);
   const [modeState, setMode] = useRecoilState(reviewModeAtom);
 
   const toggleMode = (event: MouseEvent) => {
-    setMode((event.target as HTMLElement).id as TMode);
+    const mode = (event.target as HTMLElement).id as TMode;
+    navigate(`?mode=${mode}`);
+
+    setMode(mode);
   };
 
   const reviewsMap = reviews.map((review) => (
